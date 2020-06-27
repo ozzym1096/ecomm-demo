@@ -1,11 +1,31 @@
 <script>
-	/* 
-	*  product: Object containing data related to product
-	*  id, name, department, price, adjectives[], materials[], description, image
-	*/
-	export let product;
+	/**
+	 * Card shown in home page grid
+	 * @component ProductCard
+	 * @example
+	 * 	<ProductCard/>
+	 */
 
+	/**
+	 * @type {Object}
+	 */
+	export let product;
 </script>
+
+<!--
+/**
+*
+*/
+-->
+<div class="product">
+	<div class="image-div">
+		<img class="image" src="{product.image}" alt="" />
+	</div>
+	<div class="info">
+		<h2 class="info-name">{product.name}</h2>
+		<p class="info-price">${product.price}</p>
+	</div>
+</div>
 
 <style>
 	.product,
@@ -44,13 +64,3 @@
 		margin: 0;
 	}
 </style>
-
-<div class="product">
-	<div class="image-div">
-		<img class="image" src="{product.image}" alt=""/>
-	</div>
-	<div class="info">
-		<h2 class="info-name">{product.name}</h2>
-		<p class="info-price">${product.price}</p>
-	</div>
-</div>

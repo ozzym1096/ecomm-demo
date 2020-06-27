@@ -1,7 +1,6 @@
 <script>
-	import {NavSublinks} from '../../utils/stores';
-	const {cat1} = NavSublinks;
-	
+	import { NavSublinks } from "../../utils/stores";
+	const { cat1 } = NavSublinks;
 </script>
 
 <svelte:head>
@@ -10,6 +9,8 @@
 
 <ul>
 	{#each cat1 as link}
-		<li><a href="{link[1]}">{link[0]}</a></li>
+		<li>
+			<a href="{link[1]}">{link[0]}</a>
+		</li>
 	{/each}
 </ul>

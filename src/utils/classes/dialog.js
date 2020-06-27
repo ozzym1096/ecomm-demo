@@ -31,7 +31,7 @@ aria.Dialog = function (dialogNode, focusAfterClosed, focusFirst) {
 	}
 	else {
 		throw new Error(
-		'the focusAfterClosed parameter is required for the aria.Dialog constructor.');
+			'the focusAfterClosed parameter is required for the aria.Dialog constructor.');
 	}
 
 	if (typeof focusFirst === 'string') {

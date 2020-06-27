@@ -1,22 +1,34 @@
 <script context="module">
 	export async function preload() {
-		const productsJson = await this.fetch('products.json');
+		const productsJson = await this.fetch("products.json");
 		const products = await productsJson.json();
-		products.forEach(product => {
+		products.forEach((product) => {
 			const oldUrl = product.image;
-			product.image = oldUrl.slice(0, 49) + "f_auto,q_auto/" + oldUrl.slice(49);
+			product.image =
+				oldUrl.slice(0, 49) + "f_auto,q_auto/" + oldUrl.slice(49);
 		});
-		return {products};
+		return { products };
 	}
-	
 </script>
 
 <script>
-	import Product from '../components/ProductCard';
-	
-	export let products;
+	import ProductCard from "../components/ProductCard";
 
+	export let products;
 </script>
+
+<svelte:head>
+	<title>home</title>
+</svelte:head>
+
+<section class="products">
+	<div class="products-feat">
+		<h1>Featured Products</h1>
+	</div>
+	{#each products as product}
+		<ProductCard {product} />
+	{/each}
+</section>
 
 <style>
 	.products {
@@ -45,16 +57,3 @@
 		width: max-content;
 	}
 </style>
-
-<svelte:head>
-	<title>home</title>
-</svelte:head>
-
-<section class="products">
-	<div class="products-feat">
-		<h1>Featured Products</h1>
-	</div>
-	{#each products as product}
-		<Product {product}/>
-	{/each}
-</section>
