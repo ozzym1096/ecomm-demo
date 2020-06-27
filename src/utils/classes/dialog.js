@@ -4,8 +4,8 @@ import aria from '../aria';
  * @constructor
  * @desc Dialog object providing modal focus management.
  *
- * @param dialogId
- *          The ID of the element serving as the dialog container.
+ * @param dialogNode
+ *          The element serving as the dialog container.
  * @param focusAfterClosed
  *          Either the DOM node or the ID of the DOM node to focus when the
  *          dialog closes.
@@ -78,15 +78,15 @@ aria.Dialog.prototype.trapFocus = function (event) {
 		}
 		currentDialog.lastFocus = document.activeElement;
 	}
-}; // end trapFocus
+};
 
 aria.Dialog.prototype.addListeners = function () {
 	document.addEventListener('focus', this.trapFocus, true);
-}; // end addListeners
+};
 
 aria.Dialog.prototype.removeListeners = function () {
 	document.removeEventListener('focus', this.trapFocus, true);
-}; // end removeListeners
+};
 
 aria.Dialog.prototype.close = function () {
 	aria.OpenDialogList.pop();
@@ -95,7 +95,7 @@ aria.Dialog.prototype.close = function () {
 	aria.Utils.remove(this.postNode);
 	this.focusAfterClosed.focus();
 	document.body.classList.remove(aria.Utils.dialogOpenClass);
-}; // end close
+};
 
 export const openDialog = function (dialogId, focusAfterClosed, focusFirst) {
 	new aria.Dialog(dialogId, focusAfterClosed, focusFirst);
