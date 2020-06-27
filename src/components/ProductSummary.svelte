@@ -1,6 +1,6 @@
 <script>
-	/*
-	 * {
+	/**
+	 * @type {{
 	 * 	id: string,
 	 * 	name: string,
 	 * 	department: string,
@@ -9,7 +9,7 @@
 	 * 	materials: string[],
 	 * 	description: string,
 	 * 	image: string
-	 * }
+	 * }}
 	 */
 	export let product;
 </script>

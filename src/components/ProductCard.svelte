@@ -1,21 +1,27 @@
 <script>
 	/**
-	 * Card shown in home page grid
+	 * Displayed in home page grid
 	 * @component ProductCard
-	 * @example
-	 * 	<ProductCard/>
 	 */
-
 	/**
-	 * @type {Object}
+	 * @type {{
+	 * 	id: string,
+	 * 	name: string,
+	 * 	department: string,
+	 * 	price: number,
+	 * 	adjectives: string[],
+	 * 	materials: string[],
+	 * 	description: string,
+	 * 	image: string
+	 * }}
 	 */
 	export let product;
 </script>
 
 <!--
 /**
-*
-*/
+ * Displayed in home page grid
+ */
 -->
 <div class="product">
 	<div class="image-div">
