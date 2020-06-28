@@ -1,6 +1,5 @@
 <script>
-	import { NavSublinks } from "../../utils/stores";
-	const { cat1 } = NavSublinks;
+	import { cat1 } from "../../utils/stores/navSublinks";
 </script>
 
 <svelte:head>
