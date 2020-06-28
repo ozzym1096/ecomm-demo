@@ -48,3 +48,10 @@ a > svg {
 .has-dialog {
 	overflow: hidden;
 }
+
+/******* Different States ********/
+
+a:hover,
+a:focus {
+	outline: auto;
+}
