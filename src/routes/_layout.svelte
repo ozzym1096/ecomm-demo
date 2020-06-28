@@ -1,14 +1,20 @@
 <script>
+	/**
+	 * Route files are inserted into <main/> slot
+	 */
+
 	import NavListItem from "../components/NavListItem";
 	import { NavSublinks, mainMenuVisibility } from "../utils/stores";
-	import { openDialog, closeDialog } from "../utils/classes/dialog";
-	import { handleEscape } from "../utils/aria";
+	import {
+		openDialog,
+		closeDialog,
+		handleEscape,
+	} from "../utils/classes/dialog";
 
 	export let segment;
 
 	/**
 	 * Main menu <nav/>
-	 * @type {object}
 	 */
 	let mainMenu;
 
@@ -77,25 +83,25 @@
 			<NavListItem
 				ariaCurrent="{segment === undefined}"
 				href="."
-				catName="home"
+				mainLinkTitle="home"
 			/>
 			<NavListItem
 				ariaCurrent="{segment === 'category1-pages'}"
 				href="category1-pages"
 				sublinks="{NavSublinks.cat1}"
-				catName="category 1"
+				mainLinkTitle="category 1"
 			/>
 			<NavListItem
 				ariaCurrent="{segment === 'category2-pages'}"
 				href="category2-pages"
 				sublinks="{NavSublinks.cat2}"
-				catName="category 2"
+				mainLinkTitle="category 2"
 			/>
 			<NavListItem
 				ariaCurrent="{segment === 'category3-pages'}"
 				href="category3-pages"
 				sublinks="{NavSublinks.cat3}"
-				catName="category 3"
+				mainLinkTitle="category 3"
 			/>
 		</ul>
 		<a
@@ -153,11 +159,6 @@
 		justify-self: flex-end;
 	}
 
-	#main-menu-toggle:hover,
-	#main-menu-toggle:focus {
-		color: var(--black);
-	}
-
 	#main-menu {
 		position: absolute;
 		visibility: hidden;
@@ -166,7 +167,7 @@
 		height: 100%;
 		overflow-y: scroll;
 		overflow-x: visible;
-		transition: left 0.5s ease-in, visibility 0s linear, opacity 0s linear;
+		transition: left 0.2s ease-in, visibility 0s linear, opacity 0s linear;
 		z-index: 999;
 		background: var(--primary-light);
 	}
@@ -208,8 +209,6 @@
 		visibility: visible;
 		left: 0;
 		outline: none;
-		transition: left 0.5s ease-in, visibility 0.6s linear,
-			opacity 0.5s linear;
 	}
 
 	#main-menu:target > #main-menu-close,
