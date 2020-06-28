@@ -1,11 +1,15 @@
 <script>
+	/**
+	 * Link item with sublinks in main menu
+	 * @component NavListItem
+	 */
 	import { onMount } from "svelte";
 	export let ariaCurrent;
 	export let href;
 	export let sublinks = undefined;
 	export let catName;
 	let hasSub = sublinks !== undefined,
-		subVisible = false,
+		subVisibility = false,
 		sublinkTimer,
 		container,
 		subToggle;
@@ -17,22 +21,19 @@
 					if (sublinkTimer) {
 						clearTimeout(sublinkTimer);
 						sublinkTimer = null;
-					}
+					};
 				});
 				link.addEventListener("blur", () => {
 					sublinkTimer = setTimeout(() => {
-						if (subVisible) {
-							subVisible = false;
-						}
+						subVisibility = false;
 					}, 10);
 				});
-			}
+			};
 			subToggle.addEventListener("click", (e) => {
 				e.preventDefault();
-				subVisible = !subVisible;
-				return false;
+				subVisibility = !subVisibility;
 			});
-		}
+		};
 	});
 </script>
 
@@ -47,11 +48,11 @@
 			{href}
 			aria-current="{ariaCurrent ? 'page' : undefined}"
 			aria-haspopup="true"
-			aria-expanded="{subVisible}"
+			aria-expanded="{subVisibility}"
 		>
 			<span>{catName}</span>
 			<svg
-				class="catName-svg {subVisible ? 'upward' : ''}"
+				class="catName-svg {subVisibility ? 'upward' : ''}"
 				xmlns="http://www.w3.org/2000/svg"
 				width="20"
 				height="20"
@@ -65,7 +66,7 @@
 				<polyline points="6 9 12 15 18 9"></polyline>
 			</svg>
 		</a>
-		<ul class="submenu {subVisible ? 'subVisible' : ''}">
+		<ul class="submenu {subVisibility ? 'subVisible' : ''}">
 			{#each sublinks as link}
 				<li class="sublink">
 					<a class="sublink-link" href="{link[1]}">{link[0]}</a>

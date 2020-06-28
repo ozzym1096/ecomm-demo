@@ -6,6 +6,10 @@
 
 	export let segment;
 
+	/**
+	 * Main menu <nav/>
+	 * @type {object}
+	 */
 	let mainMenu;
 
 	function handleEscapeFn(e) {
@@ -24,7 +28,6 @@
 			document.addEventListener("keyup", handleEscapeFn);
 			this.removeEventListener("transitionend", afterMenuOpens);
 		});
-		return false;
 	}
 
 	function hideMainMenu(e) {
@@ -32,7 +35,6 @@
 		$mainMenuVisibility = false;
 		closeDialog(e.target);
 		document.removeEventListener("keyup", handleEscapeFn);
-		return false;
 	}
 </script>
 

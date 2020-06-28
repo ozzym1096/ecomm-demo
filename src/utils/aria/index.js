@@ -23,7 +23,7 @@ aria.Utils.attemptFocus = function (element) {
 	}
 	aria.Utils.IgnoreUtilFocusChanges = false;
 	return (document.activeElement === element);
-}; // end attemptFocus
+};
 
 aria.Utils.focusFirstDescendant = function (element) {
 	for (var i = 0; i < element.childNodes.length; i++) {
@@ -34,7 +34,7 @@ aria.Utils.focusFirstDescendant = function (element) {
 		}
 	}
 	return false;
-}; // end focusFirstDescendant
+};
 
 aria.Utils.focusLastDescendant = function (element) {
 	for (var i = element.childNodes.length - 1; i >= 0; i--) {
@@ -45,7 +45,7 @@ aria.Utils.focusLastDescendant = function (element) {
 		}
 	}
 	return false;
-}; // end focusLastDescendant
+};
 
 aria.getCurrentDialog = function () {
 	if (aria.OpenDialogList && aria.OpenDialogList.length) {
