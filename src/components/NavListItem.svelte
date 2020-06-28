@@ -21,19 +21,19 @@
 					if (sublinkTimer) {
 						clearTimeout(sublinkTimer);
 						sublinkTimer = null;
-					};
+					}
 				});
 				link.addEventListener("blur", () => {
 					sublinkTimer = setTimeout(() => {
 						subVisibility = false;
 					}, 10);
 				});
-			};
+			}
 			subToggle.addEventListener("click", (e) => {
 				e.preventDefault();
 				subVisibility = !subVisibility;
 			});
-		};
+		}
 	});
 </script>
 
