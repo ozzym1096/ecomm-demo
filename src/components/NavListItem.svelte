@@ -1,13 +1,13 @@
 <script>
 	/**
-	 * Link item with sublinks in main menu
-	 * @component NavListItem
+	 * Main menu link with possible submenu
 	 */
+
 	import { onMount } from "svelte";
 	export let ariaCurrent;
 	export let href;
 	export let sublinks = undefined;
-	export let catName;
+	export let mainLinkTitle;
 	let hasSub = sublinks !== undefined,
 		subVisibility = false,
 		sublinkTimer,
@@ -43,16 +43,16 @@
 <li class="container" bind:this="{container}">
 	{#if hasSub}
 		<a
-			class="catName"
+			class="mainLink"
 			bind:this="{subToggle}"
 			{href}
 			aria-current="{ariaCurrent ? 'page' : undefined}"
 			aria-haspopup="true"
 			aria-expanded="{subVisibility}"
 		>
-			<span>{catName}</span>
+			<span>{mainLinkTitle}</span>
 			<svg
-				class="catName-svg {subVisibility ? 'upward' : ''}"
+				class="mainLink-svg {subVisibility ? 'upward' : ''}"
 				xmlns="http://www.w3.org/2000/svg"
 				width="20"
 				height="20"
@@ -75,11 +75,11 @@
 		</ul>
 	{:else}
 		<a
-			class="catName"
+			class="mainLink"
 			{href}
 			aria-current="{ariaCurrent ? 'page' : undefined}"
 		>
-			<span>{catName}</span>
+			<span>{mainLinkTitle}</span>
 		</a>
 	{/if}
 </li>
@@ -99,19 +99,19 @@
 		position: relative;
 	}
 
-	.catName {
+	.mainLink {
 		display: flex;
 		flex-flow: row nowrap;
 		align-items: center;
 	}
 
-	.catName-svg {
+	.mainLink-svg {
 		transform-origin: 50% 50%;
 		transition: transform ease-out 0.2s;
 		margin: 0 0 0 0.5em;
 	}
 
-	.catName-svg.upward {
+	.mainLink-svg.upward {
 		transform: rotate(-180deg);
 	}
 
