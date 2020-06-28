@@ -75,10 +75,3 @@ aria.closeCurrentDialog = function () {
 };
 
 export default aria;
-export const handleEscape = function (event, elVisibilty) {
-	var key = event.which || event.keyCode;
-	if (key === aria.KeyCode.ESC && aria.closeCurrentDialog()) {
-		elVisibilty.set(false);
-		event.stopPropagation();
-	}
-};

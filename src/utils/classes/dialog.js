@@ -104,3 +104,11 @@ export const openDialog = function (dialogId, focusAfterClosed, focusFirst) {
 export const closeDialog = function () {
 	aria.getCurrentDialog().close();
 };
+
+export const handleEscape = function (event, elVisibilty) {
+	var key = event.which || event.keyCode;
+	if (key === aria.KeyCode.ESC && aria.closeCurrentDialog()) {
+		elVisibilty.set(false);
+		event.stopPropagation();
+	}
+};
