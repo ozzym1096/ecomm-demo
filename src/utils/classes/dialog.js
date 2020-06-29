@@ -17,7 +17,7 @@ import aria from '../aria';
 aria.Dialog = function (dialogNode, focusAfterClosed, focusFirst) {
 	this.dialogNode = dialogNode;
 	if (this.dialogNode === null) {
-		throw new Error('No element found with id="' + dialogId + '".');
+		throw new Error('No element found with id="' + dialogNode + '".');
 	}
 
 	// Disable scroll on the body element
