@@ -89,7 +89,7 @@
 
 	a {
 		display: block;
-		margin: 1em;
+		margin: 1.3em 1em;
 		text-decoration: none;
 	}
 
@@ -114,7 +114,9 @@
 	}
 
 	.submenu {
-		display: none;
+		visibility: hidden;
+		display: flex;
+		flex-flow: column nowrap;
 		position: absolute;
 		background: var(--secondary-light);
 		width: 100%;
@@ -135,8 +137,7 @@
 	/* Different States */
 
 	.subVisible {
-		display: flex;
-		flex-flow: column nowrap;
+		visibility: visible;
 	}
 
 	[aria-current] > span {
