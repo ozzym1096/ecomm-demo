@@ -89,8 +89,24 @@
 
 	a {
 		display: block;
-		margin: 1.3em 1em;
+		padding: 0.5em;
+		margin: 1.5em 1em;
 		text-decoration: none;
+	}
+
+	[aria-current] > span {
+		position: relative;
+		display: inline-block;
+	}
+
+	[aria-current] > span::after {
+		position: absolute;
+		content: "";
+		width: 100%;
+		height: 2px;
+		background-color: rgb(255, 62, 0);
+		display: block;
+		bottom: -1px;
 	}
 
 	.container {
@@ -115,8 +131,6 @@
 
 	.submenu {
 		visibility: hidden;
-		display: flex;
-		flex-flow: column nowrap;
 		position: absolute;
 		background: var(--secondary-light);
 		width: 100%;
@@ -127,8 +141,6 @@
 
 	.sublink-link {
 		font-weight: 400;
-		min-width: 50px;
-		min-height: 50px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -138,20 +150,5 @@
 
 	.subVisible {
 		visibility: visible;
-	}
-
-	[aria-current] > span {
-		position: relative;
-		display: inline-block;
-	}
-
-	[aria-current] > span::after {
-		position: absolute;
-		content: "";
-		width: 100%;
-		height: 2px;
-		background-color: rgb(255, 62, 0);
-		display: block;
-		bottom: -1px;
 	}
 </style>
