@@ -5,11 +5,7 @@
 
 	import NavListItem from "../components/NavListItem";
 	import { NavSublinks, mainMenuVisibility } from "../utils/stores";
-	import {
-		openDialog,
-		closeDialog,
-		handleEscape,
-	} from "../utils/classes/dialog";
+	import { openDialog, closeDialog } from "../utils/classes/dialog";
 
 	export let segment;
 
@@ -17,40 +13,16 @@
 	 * Main menu <nav/>
 	 */
 	let mainMenu;
-
-	function handleEscapeFn(e) {
-		handleEscape(e, mainMenuVisibility);
-	}
-
-	async function showMainMenu(e) {
-		e.preventDefault();
-		$mainMenuVisibility = true;
-		mainMenu.addEventListener("transitionend", function afterMenuOpens() {
-			openDialog(
-				mainMenu,
-				e.target,
-				document.querySelector("#main-menu a")
-			);
-			document.addEventListener("keyup", handleEscapeFn);
-			this.removeEventListener("transitionend", afterMenuOpens);
-		});
-	}
-
-	function hideMainMenu(e) {
-		e.preventDefault();
-		$mainMenuVisibility = false;
-		closeDialog(e.target);
-		document.removeEventListener("keyup", handleEscapeFn);
-	}
 </script>
 
-<header>
+<header id="header">
 	<a
 		href="#main-menu"
 		id="main-menu-toggle"
 		class="menu-toggle"
-		aria-label="Open main menu"
-		on:click="{showMainMenu}"
+		on:click|preventDefault="{(e) => {
+			openDialog(mainMenuVisibility, mainMenu, e.target, document.querySelector('#main-menu a'));
+		}}"
 	>
 		<span class="menu-toggle-text">Menu</span>
 		<span class="sr-only">Open main menu</span>
@@ -105,23 +77,26 @@
 			/>
 		</ul>
 		<a
-			href="#main-menu-toggle"
+			href="#header"
 			id="main-menu-close"
 			class="menu-toggle"
-			aria-label="Close main menu"
-			on:click="{hideMainMenu}"
+			on:click|preventDefault="{() => {
+				closeDialog();
+			}}"
 		>
 			<span class="menu-toggle-text">Close</span>
 			<span class="sr-only">Close main menu</span>
 		</a>
 	</nav>
 	<a
-		href="#main-menu-toggle"
+		href="#header"
 		id="main-menu-backdrop"
 		tabindex="-1"
 		aria-hidden="true"
 		hidden
-		on:click="{hideMainMenu}"
+		on:click|preventDefault="{() => {
+			closeDialog();
+		}}"
 	>
 		<span></span>
 	</a>
@@ -162,12 +137,11 @@
 	#main-menu {
 		position: absolute;
 		visibility: hidden;
-		left: -200px;
+		left: -100%;
 		top: 0;
 		height: 100%;
 		overflow-y: scroll;
 		overflow-x: visible;
-		transition: left 0.2s ease-in, visibility 0s linear, opacity 0s linear;
 		z-index: 999;
 		background: var(--primary-light);
 	}
@@ -237,6 +211,7 @@
 		z-index: 998;
 		background: var(--black);
 		cursor: default;
+		opacity: 0.5;
 	}
 
 	@supports (position: fixed) {
