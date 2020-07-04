@@ -35,8 +35,8 @@ a > svg {
 }
 
 .wrapper {
-	width: var(--page-width);
-	max-width: var(--page-max-width);
+	width: var(--el-width, var(--page-width));
+	max-width: var(--el-max-width, var(--page-max-width));
 	margin-left: auto;
 	margin-right: auto;
 }
