@@ -23,22 +23,29 @@
 </svelte:head>
 
 <section class="products">
-	<div class="products-feat">
-		<h1>Featured Products</h1>
+	<div class="wrapper">
+		<div class="products-grid">
+			<div class="products-feat">
+				<h1>Featured Products</h1>
+			</div>
+			{#each products as product}
+				<ProductCard {product} />
+			{/each}
+		</div>
 	</div>
-	{#each products as product}
-		<ProductCard {product} />
-	{/each}
 </section>
 <ProductDetails />
 
 <style>
 	.products {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-		grid-row-gap: 2em;
-		grid-column-gap: 2em;
 		margin: 0 0 12vh;
+	}
+
+	.products-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(180px, 255px));
+		grid-row-gap: 1em;
+		grid-column-gap: 2em;
 		justify-items: center;
 	}
 
@@ -48,14 +55,11 @@
 		color: var(--secondary-dark);
 		display: flex;
 		align-items: flex-end;
-		width: 100%;
-		height: 100%;
 	}
 
 	.products-feat > h1 {
 		font-size: 2em;
 		font-weight: 700;
 		margin: 0.5em;
-		width: max-content;
 	}
 </style>
