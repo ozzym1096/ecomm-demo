@@ -1,9 +1,12 @@
 import aria from '../aria';
+import { tick } from 'svelte';
 
 /**
  * @constructor
  * @desc Dialog object providing modal focus management.
  *
+ * @param dialogStatus
+ *          A writable store with the visibility of the dialog.
  * @param dialogNode
  *          The element serving as the dialog container.
  * @param focusAfterClosed
@@ -14,14 +17,18 @@ import aria from '../aria';
  *          DOM node to focus when the dialog opens. If not specified, the
  *          first focusable element in the dialog will receive focus.
  */
-aria.Dialog = function (dialogNode, focusAfterClosed, focusFirst) {
-	this.dialogNode = dialogNode;
-	if (this.dialogNode === null) {
-		throw new Error('No element found with id="' + dialogNode + '".');
-	}
-
+aria.Dialog = function (dialogStatus, dialogNode, focusAfterClosed, focusFirst) {
 	// Disable scroll on the body element
 	document.body.classList.add(aria.Utils.dialogOpenClass);
+
+	this.dialogStatus = dialogStatus;
+
+	if (typeof dialogNode !== 'object') {
+		throw new Error(`${dialogNode} is not an element`);
+	}
+	else {
+		this.dialogNode = dialogNode;
+	}
 
 	if (typeof focusAfterClosed === 'string') {
 		this.focusAfterClosed = document.getElementById(focusAfterClosed);
@@ -82,33 +89,31 @@ aria.Dialog.prototype.trapFocus = function (event) {
 
 aria.Dialog.prototype.addListeners = function () {
 	document.addEventListener('focus', this.trapFocus, true);
+	document.addEventListener('keyup', aria.handleEscape);
 };
 
 aria.Dialog.prototype.removeListeners = function () {
+	document.removeEventListener('keyup', aria.handleEscape);
 	document.removeEventListener('focus', this.trapFocus, true);
 };
 
-aria.Dialog.prototype.close = function () {
+aria.Dialog.prototype.close = async function () {
 	aria.OpenDialogList.pop();
 	this.removeListeners();
 	aria.Utils.remove(this.preNode);
 	aria.Utils.remove(this.postNode);
-	this.focusAfterClosed.focus();
 	document.body.classList.remove(aria.Utils.dialogOpenClass);
+	this.dialogStatus.set(false);
+	await tick();
+	this.focusAfterClosed.focus();
 };
 
-export const openDialog = function (dialogId, focusAfterClosed, focusFirst) {
-	new aria.Dialog(dialogId, focusAfterClosed, focusFirst);
+export const openDialog = async function (dialogStatus, dialogNode, focusAfterClosed, focusFirst) {
+	dialogStatus.set(true);
+	await tick();
+	new aria.Dialog(dialogStatus, dialogNode, focusAfterClosed, focusFirst);
 };
 
-export const closeDialog = function () {
+export const closeDialog = async function () {
 	aria.getCurrentDialog().close();
-};
-
-export const handleEscape = function (event, elVisibilty) {
-	var key = event.which || event.keyCode;
-	if (key === aria.KeyCode.ESC && aria.closeCurrentDialog()) {
-		elVisibilty.set(false);
-		event.stopPropagation();
-	}
 };
