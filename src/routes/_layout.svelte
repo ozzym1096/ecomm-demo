@@ -55,7 +55,7 @@
 				aria-label="Main Menu"
 				aria-expanded="{$mainMenuVisibility ? 'true' : 'false'}"
 			>
-				<ul>
+				<ul class="main-menu-list">
 					<NavListItem
 						ariaCurrent="{segment === undefined}"
 						href="."
@@ -152,7 +152,7 @@
 		background: var(--primary-light);
 	}
 
-	#main-menu > ul {
+	.main-menu-list {
 		list-style: none;
 		margin: 0;
 		padding: 2.5em 0 0;
@@ -196,8 +196,8 @@
 		z-index: 1001;
 	}
 
-	#main-menu:target > ul,
-	#main-menu[aria-expanded="true"] > ul {
+	#main-menu:target > .main-menu-list,
+	#main-menu[aria-expanded="true"] > .main-menu-list {
 		z-index: 1000;
 	}
 
