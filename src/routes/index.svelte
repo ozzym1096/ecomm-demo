@@ -13,6 +13,7 @@
 
 <script>
 	import ProductCard from "../components/ProductCard";
+	import ProductDetails from "../components/ProductDetails.svelte";
 
 	export let products;
 </script>
@@ -29,12 +30,13 @@
 		<ProductCard {product} />
 	{/each}
 </section>
+<ProductDetails />
 
 <style>
 	.products {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-		grid-row-gap: 1em;
+		grid-row-gap: 2em;
 		grid-column-gap: 2em;
 		margin: 0 0 12vh;
 		justify-items: center;
