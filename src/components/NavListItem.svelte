@@ -8,6 +8,7 @@
 	export let href;
 	export let sublinks = undefined;
 	export let mainLinkTitle;
+
 	let hasSub = sublinks !== undefined,
 		subVisibility = false,
 		sublinkTimer,
@@ -37,9 +38,6 @@
 	});
 </script>
 
-{#if false}
-	<slot />
-{/if}
 <li class="container" bind:this="{container}">
 	{#if hasSub}
 		<a
