@@ -1,44 +1,68 @@
 * {
-	--page-width: 80vw;
-	--page-max-width: 1050px;
-	--primary-hue: 15;
-	--primary-color: hsl(var(--primary-hue), 100%, 50%);
-	--primary-light: hsl(var(--primary-hue), 100%, 98%);
-	--secondary-hue: 195;
-	--secondary-color: hsl(var(--secondary-hue), 100%, 50%);
-	--secondary-light: hsl(var(--secondary-hue), 100%, 95%);
-	--secondary-dark: hsl(var(--secondary-hue), 100%, 20%);
-	--white: hsl(0, 0%, 100%);
-	--black: hsl(0, 0%, 10%);
+	--page-width-max: 1440px;
+	--hue-primary: 15;
+	--color-primary: hsl(var(--hue-primary), 100%, 50%);
+	--color-primary-light: hsl(var(--hue-primary), 100%, 98%);
+	--color-primary-dark: hsl(var(--hue-primary), 100%, 20%);
+	--hue-secondary: 195;
+	--color-secondary: hsl(var(--hue-secondary), 100%, 50%);
+	--color-secondary-light: hsl(var(--hue-secondary), 100%, 95%);
+	--color-secondary-dark: hsl(var(--hue-secondary), 100%, 20%);
+	--color-white: hsl(0, 0%, 100%);
+	--color-black: hsl(0, 0%, 10%);
 }
 
-body {
-	margin: 0;
-	font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+/*
+ *
+ *
+ * Base Styles
+ *
+ *
+ */
+
+.font-xxxxlarge {
+	font-size: 32.44px;
+	line-height: calc(1ex / 0.42);
+	margin: calc(1ex / 0.42) 0;
+}
+
+.font-xxxlarge {
+	font-size: 28.83px;
+	line-height: calc(1ex / 0.42);
+	margin: calc(1ex / 0.42) 0;
+}
+
+.font-xxlarge {
+	font-size: 25.63px;
+	line-height: calc(1ex / 0.38);
+	margin: calc(1ex / 0.38) 0;
+}
+
+.font-xlarge {
+	font-size: 22.78px;
+	line-height: calc(1ex / 0.38);
+	margin: calc(1ex / 0.38) 0;
+}
+
+.font-large {
+	font-size: 20.25px;
+	line-height: calc(1ex / 0.37);
+	margin: calc(1ex / 0.37) 0;
+}
+
+.font-base {
 	font-size: 18px;
-	line-height: 1.5;
-	color: var(--black);
+	line-height: calc(1ex / 0.32);
 }
 
-h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-	font-weight: 400;
-	line-height: 1.2;
+.font-small {
+	font-size: 16px;
+	line-height: calc(1ex / 0.32);
 }
 
-a {
-	color: inherit;
-}
-
-a > svg {
-	pointer-events: none;
-}
-
-.wrapper {
-	width: var(--el-width, var(--page-width));
-	max-width: var(--el-max-width, var(--page-max-width));
-	margin-left: auto;
-	margin-right: auto;
+.font-xsmall {
+	font-size: 14.22px;
+	line-height: calc(1ex / 0.32);
 }
 
 .sr-only {
@@ -52,13 +76,174 @@ a > svg {
 	border: 0;
 }
 
-.has-dialog {
+body {
+	color: var(--color-black);
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+}
+
+.body-dialog-open {
 	overflow: hidden;
 }
 
-/******* Different States ********/
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 500;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
 
 a:hover,
 a:focus {
 	outline: auto;
 }
+
+a > svg {
+	pointer-events: none;
+}
+
+nav > ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+main {
+	position: relative;
+	background-color: var(--color-white);
+	box-sizing: border-box;
+}
+
+[aria-current] > span {
+	position: relative;
+}
+
+[aria-current] > span::after {
+	position: absolute;
+	content: "";
+	width: 2px;
+	height: 100%;
+	background-color: var(--color-primary);
+	display: block;
+	top: 0;
+	left: -7px;
+}
+
+* > .underlined {
+	position: relative;
+}
+
+.underlined::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	bottom: 1px;
+	height: 2px;
+	display: block;
+	background-color: var(--underline-color);
+}
+
+/*
+ *
+ *
+ * Layout Styles
+ *
+ *
+ */
+
+.l-wrapper {
+	max-width: var(--wrapper-width, var(--page-width-max));
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--padding, 16px);
+	padding-right: var(--padding, 16px);
+}
+
+.l-display-contents {
+	display: contents;
+}
+
+/*
+ *
+ *
+ * Global Modules
+ *
+ *
+ */
+
+ .menu-toggle {
+	--underline-color: var(--color-primary-dark);
+	display: flex;
+	font-weight: 300;
+	color: var(--color-primary-dark);
+}
+
+.menu-link {
+	padding: 0.5em;
+	margin: 1.5em 1em;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+}
+
+.dialog {
+	position: absolute;
+	visibility: hidden;
+	z-index: 999;
+}
+
+/*
+	:target for non-JavaScript
+	[aria-expanded] will be used if/when JavaScript is added to improve interaction, though it's completely optional.
+*/
+.dialog:target,
+.dialog[aria-expanded="true"] {
+	visibility: visible;
+	outline: none;
+}
+
+.dialog:target > .nav-toggle,
+.dialog[aria-expanded="true"] > .nav-toggle {
+	z-index: 1001;
+}
+
+.dialog:target > ul,
+.dialog[aria-expanded="true"] > ul {
+	z-index: 1000;
+}
+
+/*
+	We could us `.dialog:target::after`, but
+	it wouldn't be clickable.
+*/
+.dialog:target ~ .backdrop,
+.dialog[aria-expanded="true"] ~ .backdrop {
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 998;
+	background: var(--color-black);
+	cursor: default;
+	opacity: 0.5;
+}
+
+@supports (position: fixed) {
+	.dialog,
+	.dialog:target ~ .backdrop,
+	.dialog[aria-expanded="true"] ~ .backdrop {
+		position: fixed !important;
+	}
+}
+
+/*
+ *
+ *
+ * Global State Styles
+ *
+ *
+ */
+

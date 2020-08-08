@@ -5,8 +5,6 @@ import { tick } from 'svelte';
  * @constructor
  * @desc Dialog object providing modal focus management.
  *
- * @param dialogStatus
- *          A writable store with the visibility of the dialog.
  * @param dialogNode
  *          The element serving as the dialog container.
  * @param focusAfterClosed
@@ -17,11 +15,11 @@ import { tick } from 'svelte';
  *          DOM node to focus when the dialog opens. If not specified, the
  *          first focusable element in the dialog will receive focus.
  */
-aria.Dialog = function (dialogStatus, dialogNode, focusAfterClosed, focusFirst) {
+aria.Dialog = function (dialogVisibility, dialogNode, focusAfterClosed, focusFirst) {
+	this.dialogVisibility = dialogVisibility;
+
 	// Disable scroll on the body element
 	document.body.classList.add(aria.Utils.dialogOpenClass);
-
-	this.dialogStatus = dialogStatus;
 
 	if (typeof dialogNode !== 'object') {
 		throw new Error(`${dialogNode} is not an element`);
@@ -41,10 +39,7 @@ aria.Dialog = function (dialogStatus, dialogNode, focusAfterClosed, focusFirst) 
 			'the focusAfterClosed parameter is required for the aria.Dialog constructor.');
 	}
 
-	if (typeof focusFirst === 'string') {
-		this.focusFirst = document.getElementById(focusFirst);
-	}
-	else if (typeof focusFirst === 'object') {
+	if (typeof focusFirst === 'object') {
 		this.focusFirst = focusFirst;
 	}
 	else {
@@ -59,9 +54,11 @@ aria.Dialog = function (dialogStatus, dialogNode, focusAfterClosed, focusFirst) 
 	this.preNode = this.dialogNode.parentNode.insertBefore(preDiv,
 		this.dialogNode);
 	this.preNode.tabIndex = 0;
+	this.preNode.style.position = "absolute";
 	var postDiv = document.createElement('div');
 	this.postNode = this.dialogNode.parentNode.insertBefore(postDiv,
 		this.dialogNode.nextSibling);
+	this.postNode.style.position = "absolute";
 	this.postNode.tabIndex = 0;
 
 	this.addListeners();
@@ -103,17 +100,16 @@ aria.Dialog.prototype.close = async function () {
 	aria.Utils.remove(this.preNode);
 	aria.Utils.remove(this.postNode);
 	document.body.classList.remove(aria.Utils.dialogOpenClass);
-	this.dialogStatus.set(false);
-	await tick();
-	this.focusAfterClosed.focus();
+	this.dialogVisibility.set(false);
+	setTimeout(() => this.focusAfterClosed.focus(), 100);
 };
 
-export const openDialog = async function (dialogStatus, dialogNode, focusAfterClosed, focusFirst) {
-	dialogStatus.set(true);
+export const openDialog = async function (dialogVisibility, dialogNode, focusAfterClosed, focusFirst) {
+	dialogVisibility.set(true);
 	await tick();
-	new aria.Dialog(dialogStatus, dialogNode, focusAfterClosed, focusFirst);
+	new aria.Dialog(dialogVisibility, dialogNode, focusAfterClosed, focusFirst);
 };
 
-export const closeDialog = async function () {
+export const closeDialog = function () {
 	aria.getCurrentDialog().close();
 };
