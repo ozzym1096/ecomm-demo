@@ -48,8 +48,6 @@
 	/* Layouts */
 
 	#site-header {
-		padding-top: 20px;
-		padding-bottom: 20px;
 		margin-bottom: 30px;
 		display: flex;
 		flex-direction: row;
