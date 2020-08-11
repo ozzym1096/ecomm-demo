@@ -3,9 +3,10 @@
 		const productsJson = await this.fetch("products.json");
 		const products = await productsJson.json();
 		products.forEach((product) => {
-			const oldUrl = product.image;
 			product.image =
-				oldUrl.slice(0, 49) + "f_auto,q_auto/" + oldUrl.slice(49);
+				product.image.slice(0, 49) +
+				"f_auto,q_auto/" +
+				product.image.slice(49);
 		});
 		return { products };
 	}
@@ -13,7 +14,7 @@
 
 <script>
 	import ProductCard from "../components/ProductCard";
-	import ProductDetails from "../components/ProductDetails.svelte";
+	import ProductDialog from "../components/ProductDialog";
 
 	export let products;
 </script>
@@ -23,22 +24,22 @@
 </svelte:head>
 
 <section class="products">
-	<div class="wrapper">
+	<div class="l-wrapper">
 		<div class="products-grid">
-			<div class="products-feat">
-				<h1>Featured Products</h1>
+			<div class="products-grid-feat">
+				<h1 class="font-xxxxlarge">Featured Products</h1>
 			</div>
 			{#each products as product}
 				<ProductCard {product} />
 			{/each}
 		</div>
+		<ProductDialog />
 	</div>
 </section>
-<ProductDetails />
 
 <style>
 	.products {
-		margin: 0 0 12vh;
+		margin-bottom: 12vh;
 	}
 
 	.products-grid {
@@ -49,17 +50,20 @@
 		justify-items: center;
 	}
 
-	.products-feat {
+	.products-grid-feat {
+		width: 100%;
+		height: 100%;
 		grid-area: 1 / 1 / span 1 / span 1;
-		background-color: var(--secondary-light);
-		color: var(--secondary-dark);
 		display: flex;
 		align-items: flex-end;
+		background-color: var(--color-secondary-light);
+		color: var(--color-secondary-dark);
 	}
 
-	.products-feat > h1 {
-		font-size: 2em;
-		font-weight: 700;
-		margin: 0.5em;
+	.products-grid-feat > h1 {
+		font-weight: 600;
+		margin-left: 0.5em;
+		margin-bottom: 0.5em;
+		margin-top: 130px;
 	}
 </style>
