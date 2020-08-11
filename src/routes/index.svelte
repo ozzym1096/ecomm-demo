@@ -24,17 +24,17 @@
 </svelte:head>
 
 <section class="products">
-	<div class="l-wrapper">
-		<div class="products-grid">
-			<div class="products-grid-feat">
+	<div class="l-wrapper" style="--padding: 10px;">
+		<ul class="products-grid cards-list">
+			<li class="products-grid-feat">
 				<h1 class="font-xxxxlarge">Featured Products</h1>
-			</div>
+			</li>
 			{#each products as product}
 				<ProductCard {product} />
 			{/each}
-		</div>
-		<ProductDialog />
+		</ul>
 	</div>
+	<ProductDialog />
 </section>
 
 <style>
@@ -63,7 +63,8 @@
 	.products-grid-feat > h1 {
 		font-weight: 600;
 		margin-left: 0.5em;
+		margin-right: 0.5em;
 		margin-bottom: 0.5em;
-		margin-top: 130px;
+		margin-top: 70px;
 	}
 </style>
