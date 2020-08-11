@@ -104,7 +104,8 @@ a > svg {
 	pointer-events: none;
 }
 
-nav > ul {
+nav > ul,
+.cards-list {
 	list-style: none;
 	padding-left: 0;
 }
