@@ -24,7 +24,7 @@
 </svelte:head>
 
 <section class="products">
-	<div class="l-wrapper" style="--padding: 10px;">
+	<div class="l-wrapper" style="--padding: 0px;">
 		<ul class="products-grid cards-list">
 			<li class="products-grid-feat">
 				<h1 class="font-xxxxlarge">Featured Products</h1>
