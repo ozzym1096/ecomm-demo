@@ -64,13 +64,13 @@
 			</svg>
 		</a>
 		<ul
-			class="submenu {subVisibility ? 'submenu-is-visible' : ''}"
+			class="submenu menu-list {subVisibility ? 'submenu-is-visible' : ''}"
 			aria-label="Submenu for {menuPageInfo.title}"
 		>
 			{#each menuPageInfo.subpages as subpage}
-				<li class="submenuitem">
+				<li class="submenu-item">
 					<a
-						class="submenuitem-link menu-link font-base"
+						class="submenu-item-link menu-link font-base"
 						href="{toUrlSegment(menuPageInfo.title) + '/' + toUrlSegment(subpage)}"
 						aria-current="{$page.path === '/' + toUrlSegment(menuPageInfo.title) + '/' + toUrlSegment(subpage) ? 'page' : undefined}"
 						on:click="{() => {
@@ -123,7 +123,7 @@
 		visibility: visible;
 	}
 
-	.submenuitem-link {
+	.submenu-item-link {
 		display: flex;
 		align-items: center;
 		justify-content: center;

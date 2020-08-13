@@ -78,16 +78,18 @@
 
 body {
 	color: var(--color-black);
+	background-color: var(--color-white);
 	font-family: "Open Sans", sans-serif;
 	font-weight: 400;
 }
 
-.body-dialog-open {
-	overflow: hidden;
+main {
+	position: relative;
+	box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 500;
+	font-weight: 600;
 }
 
 a {
@@ -104,16 +106,24 @@ a > svg {
 	pointer-events: none;
 }
 
-nav > ul,
+.menu-list,
 .cards-list {
 	list-style: none;
 	padding-left: 0;
 }
 
-main {
+.underlined {
 	position: relative;
-	background-color: var(--color-white);
-	box-sizing: border-box;
+}
+
+.underlined::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	bottom: 1px;
+	height: 2px;
+	display: block;
+	background-color: var(--underline-color);
 }
 
 [aria-current] > span {
@@ -129,20 +139,6 @@ main {
 	display: block;
 	top: 0;
 	left: -7px;
-}
-
-* > .underlined {
-	position: relative;
-}
-
-.underlined::after {
-	content: "";
-	position: absolute;
-	width: 100%;
-	bottom: 1px;
-	height: 2px;
-	display: block;
-	background-color: var(--underline-color);
 }
 
 /*
@@ -173,13 +169,6 @@ main {
  *
  */
 
- .menu-toggle {
-	--underline-color: var(--color-primary-dark);
-	display: flex;
-	font-weight: 300;
-	color: var(--color-primary-dark);
-}
-
 .menu-link {
 	padding: 0.5em;
 	margin: 1.5em 1em;
@@ -192,6 +181,18 @@ main {
 	position: absolute;
 	visibility: hidden;
 	z-index: 999;
+	overflow-y: auto;
+}
+
+.dialog-is-open {
+	overflow: hidden;
+}
+
+.dialog-toggle {
+	--underline-color: var(--color-primary-dark);
+	display: flex;
+	font-weight: 300;
+	color: var(--color-primary-dark);
 }
 
 /*
@@ -204,13 +205,13 @@ main {
 	outline: none;
 }
 
-.dialog:target > .nav-toggle,
-.dialog[aria-expanded="true"] > .nav-toggle {
+.dialog:target .dialog-toggle,
+.dialog[aria-expanded="true"] .dialog-toggle {
 	z-index: 1001;
 }
 
-.dialog:target > ul,
-.dialog[aria-expanded="true"] > ul {
+.dialog:target .dialog-content,
+.dialog[aria-expanded="true"] .dialog-content {
 	z-index: 1000;
 }
 

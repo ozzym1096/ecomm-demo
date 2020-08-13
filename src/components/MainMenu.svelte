@@ -17,13 +17,13 @@
 	aria-label="Main Menu"
 	aria-expanded="{$mainMenuVisibility ? 'true' : 'false'}"
 >
-	<ul>
+	<ul class="dialog-content menu-list">
 		{#each mainMenuPages as menuPageInfo}
 			<MainMenuItem {menuPageInfo} />
 		{/each}
 	</ul>
 	<a
-		class="menu-toggle font-small"
+		class="dialog-toggle font-small"
 		href="#site-header"
 		on:click|preventDefault="{() => {
 			closeDialog();
@@ -51,7 +51,6 @@
 		left: -100%;
 		top: 0;
 		min-height: 100vh;
-		overflow-y: scroll;
 		background-color: var(--color-primary-light);
 	}
 
@@ -65,7 +64,7 @@
 		width: 245px;
 	}
 
-	.main-menu > .menu-toggle {
+	.main-menu > .dialog-toggle {
 		position: absolute;
 		right: 10%;
 		top: 6%;

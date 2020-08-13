@@ -9,7 +9,7 @@
 <header id="site-header" class="l-wrapper">
 	<div class="l-display-contents">
 		<a
-			class="menu-toggle font-small"
+			class="dialog-toggle font-small"
 			href="#main-nav"
 			on:click|preventDefault="{(e) => {
 				openDialog(mainMenuVisibility, mainMenuNode, e.target, mainMenuNode.querySelector('a'));
