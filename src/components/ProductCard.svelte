@@ -1,9 +1,8 @@
 <script>
-	/**
-	 * Product details displayed in home page grid
-	 */
-
-	import { productDetailsVisibility, activeProduct } from "../utils/stores";
+	import {
+		detailedProductVisibility,
+		currDetailedProduct,
+	} from "../utils/stores";
 	import { openDialog } from "../utils/classes/dialog";
 
 	/**
@@ -21,37 +20,46 @@
 	export let product;
 </script>
 
-<a
-	class="product"
-	href="#product-details"
-	on:click|preventDefault="{(e) => {
-		activeProduct.set(product);
-		openDialog(productDetailsVisibility, document.getElementById('product-details'), e.target, document.querySelector('#product-details a'));
-	}}"
->
-	<div
-		class="image-div"
-		style="background-image: url({product.image});"
-	></div>
-	<div class="info">
-		<h2 class="info-name">{product.name}</h2>
-		<p class="info-price">${product.price}</p>
-	</div>
-</a>
+<li class="product-card">
+	<a
+		href="#product-detailed"
+		on:click|preventDefault="{(e) => {
+			currDetailedProduct.set(product);
+			openDialog(detailedProductVisibility, document.getElementById('product-detailed'), e.target, document
+					.getElementById('product-detailed')
+					.querySelector('a'));
+		}}"
+	>
+		<div
+			class="product-card-image"
+			style="background-image: url({product.image});"
+		></div>
+		<div class="card-info">
+			<h2 class="card-info-name">
+				<span
+					class="underlined"
+					style="--underline-color: currentColor;"
+				>
+					{product.name}
+				</span>
+			</h2>
+			<p class="card-info-price">${product.price}</p>
+		</div>
+	</a>
+</li>
 
 <style>
-	.product,
-	.info {
+	.product-card,
+	.card-info {
 		display: flex;
 		flex-direction: column;
 	}
 
-	.product {
-		text-decoration: none;
+	.product-card {
 		width: 100%;
 	}
 
-	.image-div {
+	.product-card-image {
 		position: relative;
 		width: 100%;
 		height: 25vh;
@@ -60,7 +68,7 @@
 		background-size: cover;
 	}
 
-	.info {
-		padding: 1em 0 0 0;
+	.card-info {
+		padding-top: 1em;
 	}
 </style>
