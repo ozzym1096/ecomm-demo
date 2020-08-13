@@ -12,7 +12,7 @@ aria.KeyCode = {
 aria.Utils = {};
 
 aria.Utils.IgnoreUtilFocusChanges = false;
-aria.Utils.dialogOpenClass = 'body-dialog-open';
+aria.Utils.dialogOpenClass = 'dialog-is-open';
 aria.OpenDialogList = new Array(0);
 
 aria.Utils.attemptFocus = function (element) {
