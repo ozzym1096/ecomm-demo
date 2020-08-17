@@ -87,7 +87,7 @@
 	<li class="main-menu-item">
 		<a
 			class="menu-link font-base"
-			href="{menuPageInfo.title === 'home' ? '.' : toUrlSegment(menuPageInfo.title)}"
+			href="{menuPageInfo.title === 'home' ? '/' : toUrlSegment(menuPageInfo.title)}"
 			aria-current="{menuPageInfo.title === 'home' && $page.path === '/' ? 'page' : $page.path === toUrlSegment(menuPageInfo.title) ? 'page' : undefined}"
 			on:click="{() => {
 				closeDialog();
