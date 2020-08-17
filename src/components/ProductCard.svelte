@@ -30,10 +30,11 @@
 					.querySelector('a'));
 		}}"
 	>
-		<div
-			class="product-card-image"
-			style="background-image: url({product.image});"
-		></div>
+		<img
+			class="lazyload product-card-image"
+			data-src="{product.image}"
+			alt=""
+		/>
 		<div class="card-info">
 			<h2 class="card-info-name">
 				<span
@@ -64,8 +65,8 @@
 		width: 100%;
 		height: 25vh;
 		min-height: 185px;
-		background-position: center;
-		background-size: cover;
+		object-position: center;
+		object-fit: cover;
 	}
 
 	.card-info {
