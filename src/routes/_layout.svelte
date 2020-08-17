@@ -10,7 +10,7 @@
 	<div class="l-display-contents">
 		<a
 			class="dialog-toggle font-small"
-			href="#main-nav"
+			href="#main-menu"
 			on:click|preventDefault="{(e) => {
 				openDialog(mainMenuVisibility, mainMenuNode, e.target, mainMenuNode.querySelector('a'));
 			}}"
