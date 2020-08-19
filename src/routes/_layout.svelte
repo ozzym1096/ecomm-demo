@@ -19,7 +19,7 @@
 			<span class="underlined" aria-hidden="true">Menu</span>
 			<span class="sr-only">Open main menu</span>
 		</a>
-		<a class="site-header-logo font-large" href=".">Craaaiiig's</a>
+		<a class="site-header-logo font-large" href="/">Craaaiiig's</a>
 		<MainMenu bind:mainMenuNode />
 		<svg
 			class="site-header-cart"
