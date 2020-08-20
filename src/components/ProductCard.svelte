@@ -22,7 +22,7 @@
 
 <li class="product-card">
 	<a
-		href="#product-detailed"
+		href="/products/{product.id}"
 		on:click|preventDefault="{(e) => {
 			currDetailedProduct.set(product);
 			openDialog(detailedProductVisibility, document.getElementById('product-detailed'), e.target, document
