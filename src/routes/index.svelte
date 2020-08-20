@@ -1,14 +1,14 @@
 <script context="module">
 	export async function preload() {
-		const productsJson = await this.fetch("products.json");
-		const products = await productsJson.json();
-		products.forEach((product) => {
+		const res = await this.fetch("products.json");
+		let data = await res.json();
+		data.forEach((product) => {
 			product.image =
 				product.image.slice(0, 49) +
 				"f_auto,q_auto/" +
 				product.image.slice(49);
 		});
-		return { products };
+		return { products: data };
 	}
 </script>
 
@@ -27,7 +27,7 @@
 	<div class="l-wrapper" style="--padding: 0px;">
 		<ul class="products-grid cards-list">
 			<li class="products-grid-feat">
-				<h1 class="font-xxxxlarge">Featured Products</h1>
+				<h1 class="font-base">Featured Products</h1>
 			</li>
 			{#each products as product}
 				<ProductCard {product} />
