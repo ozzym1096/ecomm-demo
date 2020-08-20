@@ -3,9 +3,8 @@ const WebpackModules = require('webpack-modules');
 const path = require('path');
 const config = require('sapper/config/webpack.js');
 const pkg = require('./package.json');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const mode = process.env.NODE_ENV;
+const mode = process.env.NODE_ENV || 'development';
 const dev = mode === 'development';
 
 const alias = { svelte: path.resolve('node_modules', 'svelte') };
@@ -26,44 +25,23 @@ module.exports = {
 						options: {
 							dev,
 							hydratable: true,
-							hotReload: dev,
-							emitCss: true
+							// Pending svelte@3.24.1 fix
+							hotReload: false
 						}
 					}
-				},
-				{
-					test: /\.css$/i,
-					use: [
-						{
-							loader: MiniCssExtractPlugin.loader,
-							options: {
-								esModule: true,
-								hmr: dev
-							},
-						},
-						{
-							loader: 'css-loader',
-							options: {
-								sourceMap: true
-							}
-						}
-					],
-				},
+				}
 			]
 		},
 		mode,
 		plugins: [
-			dev && new webpack.HotModuleReplacementPlugin(),
+			// Pending svelte@3.24.1 fix
+			// dev && new webpack.HotModuleReplacementPlugin,
 			new webpack.DefinePlugin({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)
-			}),
-			new MiniCssExtractPlugin({
-				filename: dev ? '[name].css' : '[name].[hash].css',
-				chunkFilename: dev ? '[id].css' : '[id].[hash].css'
 			})
 		].filter(Boolean),
-		devtool: dev && 'inline-source-map'
+		devtool: dev ? 'source-map' : false
 	},
 
 	server: {
