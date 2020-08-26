@@ -25,7 +25,6 @@ module.exports = {
 						options: {
 							dev,
 							hydratable: true,
-							// Pending svelte@3.24.1 fix
 							hotReload: true
 						}
 					}
@@ -34,7 +33,6 @@ module.exports = {
 		},
 		mode,
 		plugins: [
-			// Pending svelte@3.24.1 fix
 			dev && new webpack.HotModuleReplacementPlugin,
 			new webpack.DefinePlugin({
 				'process.browser': true,
