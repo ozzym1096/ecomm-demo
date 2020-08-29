@@ -3,31 +3,31 @@ export const home = {
 };
 
 export const cat1 = {
-	title: "category 1",
+	title: "products",
 	subpages: [
-		"Link 1",
-		"Link 2"
+		"featured",
+		"exclusives",
+		"popular",
+		"newest",
 	],
 };
 
 export const cat2 = {
-	title: "category 2",
+	title: "about us",
 	subpages: [
-		"Link 1",
-		"Link 2",
-		"Link 3",
-		"Link 4"
+		"our goal",
+		"our staff",
+		"careers",
+		"our history",
 	]
 };
 
 export const cat3 = {
-	title: "category 3",
+	title: "contact us",
 	subpages: [
-		"Link 1",
-		"Link 2",
-		"Link 3",
-		"Link 4",
-		"Link 5"
+		"email",
+		"phone number",
+		"mailing address",
 	]
 };
 

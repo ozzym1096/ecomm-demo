@@ -1,5 +1,8 @@
 <div>
-	<span>This is link 1 in category 1</span>
+	<span>
+		sell stuff
+		<span class="emoji">¯\_(ツ)_/¯</span>
+	</span>
 </div>
 
 <style>
@@ -14,5 +17,9 @@
 	span {
 		font-size: 50px;
 		margin-top: 2em;
+	}
+
+	.emoji {
+		margin-left: 0.6em;
 	}
 </style>
