@@ -44,6 +44,8 @@
 				subVisibility = !subVisibility;
 			}}"
 			href="{toUrlSegment(menuPageInfo.title)}"
+			aria-current="{$page.path === `/${toUrlSegment(menuPageInfo.title)}` ? 'page' : undefined}"
+			role="button"
 			aria-haspopup="true"
 			aria-expanded="{subVisibility}"
 		>

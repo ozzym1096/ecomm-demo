@@ -26,28 +26,30 @@
 <article
 	id="product-detailed"
 	class="dialog"
-	aria-label="Product details"
+	aria-label="Information about {$currDetailedProduct.name}"
 	aria-expanded="{$detailedProductVisibility ? 'true' : 'false'}"
 >
-	<div class="product-details dialog-content">
-		<span class="detail">{$currDetailedProduct.name}</span>
-		<span class="detail">{$currDetailedProduct.id}</span>
-		<span class="detail">${$currDetailedProduct.price}</span>
-		<span class="detail">{$currDetailedProduct.department}</span>
-		<span class="detail">{$currDetailedProduct.description}</span>
-		<span class="detail">{$currDetailedProduct.adjectives}</span>
-		<span class="detail">{$currDetailedProduct.materials}</span>
+	<div class="wrapper">
+		<div class="product-details dialog-content">
+			<span class="detail">{$currDetailedProduct.name}</span>
+			<span class="detail">{$currDetailedProduct.id}</span>
+			<span class="detail">${$currDetailedProduct.price}</span>
+			<span class="detail">{$currDetailedProduct.department}</span>
+			<span class="detail">{$currDetailedProduct.description}</span>
+			<span class="detail">{$currDetailedProduct.adjectives}</span>
+			<span class="detail">{$currDetailedProduct.materials}</span>
+		</div>
+		<a
+			href="#header"
+			class="product-details-toggle dialog-toggle"
+			on:click|preventDefault="{() => {
+				closeDialog();
+			}}"
+		>
+			<span class="underlined">Close</span>
+			<span class="sr-only">Close product details</span>
+		</a>
 	</div>
-	<a
-		href="#header"
-		class="product-details-toggle dialog-toggle"
-		on:click|preventDefault="{() => {
-			closeDialog();
-		}}"
-	>
-		<span class="underlined">Close</span>
-		<span class="sr-only">Close product details</span>
-	</a>
 </article>
 <a
 	class="backdrop"

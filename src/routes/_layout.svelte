@@ -1,7 +1,7 @@
 <script>
 	import MainMenu from "../components/MainMenu";
-	import { mainMenuVisibility } from "../utils/stores";
 	import { openDialog } from "../utils/classes/dialog";
+	import { mainMenuVisibility } from "../utils/stores";
 
 	let mainMenuNode;
 </script>

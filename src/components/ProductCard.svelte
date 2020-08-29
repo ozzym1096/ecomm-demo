@@ -20,6 +20,7 @@
 	export let product;
 </script>
 
+<!-- @component Show in grid on home page -->
 <li class="product-card">
 	<a
 		href="/products/{product.id}"
