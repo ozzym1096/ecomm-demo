@@ -38,12 +38,7 @@
 		/>
 		<div class="card-info">
 			<h2 class="card-info-name">
-				<span
-					class="underlined"
-					style="--underline-color: currentColor;"
-				>
-					{product.name}
-				</span>
+				<span>{product.name}</span>
 			</h2>
 			<p class="card-info-price">${product.price}</p>
 		</div>

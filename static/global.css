@@ -100,7 +100,6 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
 	color: inherit;
-	text-decoration: none;
 }
 
 a > svg {
@@ -110,20 +109,6 @@ a > svg {
 .nav-list,
 .cards-list {
 	padding-left: 0;
-}
-
-.underlined {
-	position: relative;
-}
-
-.underlined::after {
-	content: "";
-	position: absolute;
-	width: 100%;
-	bottom: 1px;
-	height: 2px;
-	display: block;
-	background-color: var(--underline-color);
 }
 
 [aria-current] > span {
@@ -181,8 +166,6 @@ a > svg {
 }
 
 .dialog-toggle {
-	--underline-color: var(--color-primary-dark);
-	display: flex;
 	font-weight: 300;
 	color: var(--color-primary-dark);
 }

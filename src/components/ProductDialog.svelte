@@ -46,7 +46,7 @@
 				closeDialog();
 			}}"
 		>
-			<span class="underlined">Close</span>
+			<span>Close</span>
 			<span class="sr-only">Close product details</span>
 		</a>
 	</div>

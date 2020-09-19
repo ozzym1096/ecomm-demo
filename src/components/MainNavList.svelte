@@ -67,10 +67,6 @@
 		}
 	}
 
-	.nav-list-item > a {
-		text-decoration: underline;
-	}
-
 	@media (orientation: landscape) {
 		.nav-list {
 			justify-content: center;
