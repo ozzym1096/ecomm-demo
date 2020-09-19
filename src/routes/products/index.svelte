@@ -13,8 +13,8 @@
 </script>
 
 <script>
-	import ProductCard from "../../components/ProductCard";
-	import ProductDialog from "../../components/ProductDialog";
+	import ProductCard from "../../components/ProductCard.svelte";
+	import ProductDialog from "../../components/ProductDialog.svelte";
 
 	export let products;
 </script>
