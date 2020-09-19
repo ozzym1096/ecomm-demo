@@ -61,5 +61,6 @@
 	.main-header-nav {
 		background-color: var(--color-primary-light);
 		grid-area: nav;
+		overflow: hidden;
 	}
 </style>

@@ -57,13 +57,13 @@
 
 	@keyframes navListScroll {
 		0% {
-			margin-left: 0.5em;
+			transform: translateX(0);
 		}
 		50% {
-			margin-left: -30px;
+			transform: translateX(-25px);
 		}
 		100% {
-			margin-left: 0.5em;
+			transform: translateX(0);
 		}
 	}
 
@@ -73,9 +73,9 @@
 		}
 	}
 
-	@media (orientation: portrait) {
-		.nav-list-item:first-of-type {
-			animation: 1s ease-out 0.5s navListScroll;
+	@media (orientation: portrait) and (max-width: 450px) {
+		.nav-list {
+			animation: 1s ease-in-out 0.5s navListScroll;
 		}
 	}
 </style>
