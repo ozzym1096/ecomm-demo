@@ -1,4 +1,5 @@
 <div>
+	<span>our goal:</span>
 	<span>
 		sell stuff
 		<span class="emoji">¯\_(ツ)_/¯</span>
