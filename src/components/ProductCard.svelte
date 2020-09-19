@@ -23,6 +23,7 @@
 <!-- @component Show in grid on home page -->
 <li class="product-card">
 	<a
+		class="product-card-link"
 		href="/products/{product.id}"
 		on:click|preventDefault="{(e) => {
 			currDetailedProduct.set(product);
@@ -56,6 +57,10 @@
 		width: 100%;
 	}
 
+	.product-card-link {
+		text-decoration: none;
+	}
+
 	.product-card-image {
 		position: relative;
 		width: 100%;
@@ -67,5 +72,9 @@
 
 	.card-info {
 		padding-top: 1em;
+	}
+
+	.card-info-name {
+		text-decoration: underline;
 	}
 </style>
