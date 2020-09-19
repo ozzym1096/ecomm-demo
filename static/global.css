@@ -1,7 +1,7 @@
 * {
 	--page-width-max: 1440px;
 	--hue-primary: 15;
-	--color-primary: hsl(var(--hue-primary), 100%, 50%);
+	--color-primary: hsl(var(--hue-primary), 100%, 43%);
 	--color-primary-light: hsl(var(--hue-primary), 100%, 99%);
 	--color-primary-dark: hsl(var(--hue-primary), 100%, 20%);
 	--hue-secondary: 195;
@@ -107,9 +107,8 @@ a > svg {
 	pointer-events: none;
 }
 
-.menu-list,
+.nav-list,
 .cards-list {
-	list-style: none;
 	padding-left: 0;
 }
 
@@ -169,20 +168,6 @@ a > svg {
  *
  *
  */
-
-.menu-link {
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-	margin-top: 1.5em;
-	margin-bottom: 1.5em;
-	margin-left: 1em;
-	margin-right: 1em;
-	display: flex;
-	flex-flow: row nowrap;
-	align-items: center;
-}
 
 .dialog {
 	position: absolute;

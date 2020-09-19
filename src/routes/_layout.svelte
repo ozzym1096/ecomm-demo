@@ -1,28 +1,12 @@
 <script>
-	import MainMenu from "../components/MainMenu";
-	import { openDialog } from "../utils/classes/dialog";
-	import { mainMenuVisibility } from "../utils/stores";
-
-	let mainMenuNode;
+	import MainNavList from "../components/MainNavList.svelte";
 </script>
 
-<header id="site-header" class="l-wrapper">
+<header id="main-header" class="l-wrapper">
 	<div class="l-display-contents">
-		<a
-			class="dialog-toggle font-small"
-			href="#main-menu"
-			on:click|preventDefault="{(e) => {
-				openDialog(mainMenuVisibility, mainMenuNode, e.target, mainMenuNode.querySelector('a'));
-			}}"
-			aria-haspopup="menu"
-		>
-			<span class="underlined" aria-hidden="true">Menu</span>
-			<span class="sr-only">Open main menu</span>
-		</a>
-		<a class="site-header-logo font-large" href="/">Craaaiiig's</a>
-		<MainMenu bind:mainMenuNode />
+		<a class="main-header-logo font-large" href="/">Craaaiiig's</a>
 		<svg
-			class="site-header-cart"
+			class="main-header-cart"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 576 512"
 		>
@@ -38,6 +22,9 @@
 				0 20.92-7.754 23.403-18.681z"
 			></path>
 		</svg>
+		<nav class="main-header-nav font-base" aria-label="Website categories">
+			<MainNavList />
+		</nav>
 	</div>
 </header>
 <main>
@@ -45,29 +32,34 @@
 </main>
 
 <style>
-	/* Layouts */
-
-	#site-header {
+	#main-header {
 		margin-bottom: 30px;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: repeat(2, 50%);
+		grid-template-areas:
+			"logo cart"
+			"nav nav";
 		align-items: center;
-		background-color: var(--color-primary-light);
+		background-color: var(--color-white);
 	}
 
-	/* Modules */
-
-	/* Submodules */
-
-	.site-header-logo {
+	.main-header-logo {
 		font-weight: 600;
 		color: var(--color-primary);
+		grid-area: logo;
+		justify-self: start;
 	}
 
-	.site-header-cart {
+	.main-header-cart {
 		width: 2vw;
 		min-width: 25px;
-		fill: var(--color-primary-dark);
+		fill: var(--color-primary);
+		grid-area: cart;
+		justify-self: end;
+	}
+
+	.main-header-nav {
+		background-color: var(--color-primary-light);
+		grid-area: nav;
 	}
 </style>
