@@ -10,6 +10,7 @@
 		"start": "node __sapper__/build"
 	},
 	"dependencies": {
+		"cloudinary-core": "^2.11.3",
 		"compression": "^1.7.1",
 		"express": "^4.17.1",
 		"pg": "^8.3.3"
