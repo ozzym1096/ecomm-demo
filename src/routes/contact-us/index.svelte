@@ -1,1 +1,3 @@
-<span>Still looking for a phone number</span>
+<div class="l-wrapper">
+	<p>Still looking for a phone number</p>
+</div>

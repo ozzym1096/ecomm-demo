@@ -1,14 +1,13 @@
-<div>
+<div class="flex-column" style="width: 100%;">
 	<span>our goal:</span>
-	<span>
-		sell stuff
+	<div>
+		<span>sell stuff</span>
 		<span class="emoji">¯\_(ツ)_/¯</span>
-	</span>
+	</div>
 </div>
 
 <style>
-	div {
-		width: 100%;
+	.flex-column {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -18,9 +17,5 @@
 	span {
 		font-size: 50px;
 		margin-top: 2em;
-	}
-
-	.emoji {
-		margin-left: 0.6em;
 	}
 </style>
