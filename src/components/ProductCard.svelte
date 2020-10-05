@@ -18,9 +18,9 @@
 	 * }}
 	 */
 	export let product;
+	export let cl;
 </script>
 
-<!-- @component Show in grid on home page -->
 <li class="product-card">
 	<a
 		class="product-card-link"
@@ -33,48 +33,36 @@
 		}}"
 	>
 		<img
-			class="lazyload product-card-image"
-			data-src="{product.image}"
+			class="product-card-image card-image"
+			src="{cl.url(`ecomm-demo\/${product.image}.jpg`)}"
 			alt=""
 		/>
-		<div class="card-info">
-			<h2 class="card-info-name">
-				<span>{product.name}</span>
-			</h2>
-			<p class="card-info-price">${product.price}</p>
+		<div class="product-card-info card-info">
+			<h2 class="product-card-info-name font-base">{product.name}</h2>
+			<p>${product.price}</p>
 		</div>
 	</a>
 </li>
 
 <style>
-	.product-card,
-	.card-info {
-		display: flex;
-		flex-direction: column;
-	}
-
 	.product-card {
 		width: 100%;
 	}
 
 	.product-card-link {
 		text-decoration: none;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.product-card-image {
-		position: relative;
+		height: auto;
 		width: 100%;
-		height: 25vh;
-		min-height: 185px;
 		object-position: center;
 		object-fit: cover;
 	}
 
-	.card-info {
-		padding-top: 1em;
-	}
-
-	.card-info-name {
+	.product-card-info-name {
 		text-decoration: underline;
 	}
 </style>

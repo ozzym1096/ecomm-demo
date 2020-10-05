@@ -8,7 +8,11 @@
 
 <script>
 	export let product;
+
+	import { Cloudinary } from "cloudinary-core";
+
+	const cl = new Cloudinary({ cloud_name: "dmi84pjlo", secure: true });
 </script>
 
 <h2>{product.name}</h2>
-<img src="{product.image}" alt="" />
+<img src="{`ecomm-demo\/${product.image}.jpg`}" alt="" />

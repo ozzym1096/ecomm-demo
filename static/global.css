@@ -109,6 +109,7 @@ a > svg {
 .nav-list,
 .cards-list {
 	padding-left: 0;
+	list-style-type: none;
 }
 
 [aria-current] > span {

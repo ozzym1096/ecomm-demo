@@ -8,19 +8,6 @@
 		currDetailedProduct,
 	} from "../utils/stores";
 	import { closeDialog } from "../utils/classes/dialog";
-
-	/**
-	 * $currDetailedProduct = {{
-	 * 	id: string,
-	 * 	name: string,
-	 * 	department: string,
-	 * 	price: number,
-	 * 	adjectives: string[],
-	 * 	materials: string[],
-	 * 	description: string,
-	 * 	image: string
-	 * }}
-	 */
 </script>
 
 <article
@@ -29,7 +16,7 @@
 	aria-label="Information about {$currDetailedProduct.name}"
 	aria-expanded="{$detailedProductVisibility ? 'true' : 'false'}"
 >
-	<div class="wrapper">
+	<div class="l-wrapper">
 		<div class="product-details dialog-content">
 			<span class="detail">{$currDetailedProduct.name}</span>
 			<span class="detail">{$currDetailedProduct.id}</span>
@@ -40,8 +27,8 @@
 			<span class="detail">{$currDetailedProduct.materials}</span>
 		</div>
 		<a
-			href="#header"
-			class="product-details-toggle dialog-toggle"
+			href="#products"
+			class="product-detailed-toggle dialog-toggle"
 			on:click|preventDefault="{() => {
 				closeDialog();
 			}}"
@@ -53,7 +40,7 @@
 </article>
 <a
 	class="backdrop"
-	href="#header"
+	href="#products"
 	tabindex="-1"
 	aria-hidden="true"
 	hidden
@@ -67,10 +54,9 @@
 <style>
 	#product-detailed {
 		height: 65%;
+		width: 100%;
 		padding-top: 3em;
 		padding-bottom: 1em;
-		padding-left: 16px;
-		padding-right: 16px;
 		border-radius: 25px 25px 0 0;
 		background: var(--color-primary-light);
 		left: 0;
@@ -87,12 +73,12 @@
 		margin-bottom: 1em;
 	}
 
-	.product-details > span:last-of-type {
+	.product-details > .detail:last-of-type {
 		margin-top: 1em;
 		margin-bottom: 2em;
 	}
 
-	.product-details-toggle {
+	.product-detailed-toggle {
 		position: absolute;
 		right: 7%;
 		top: 6%;
