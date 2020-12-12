@@ -33,9 +33,9 @@
 		}}"
 	>
 		<img
-			use:image="{{ src: `/ecomm-demo/${product.image}`, bind: '.product-card', lazy: true, options: { crop: 'lfill', gravity: 'auto' } }}"
+			use:image="{{ src: `\/ecomm-demo\/${product.image}`, bind: '.product-card', lazy: true, options: { crop: 'lfill', gravity: 'auto' } }}"
 			class="product-card-image card-image"
-			alt="{`Product photo of ${product.description}`}"
+			alt="{`Product photo of ${product.name}`}"
 		/>
 		<div class="product-card-info card-info">
 			<h2 class="product-card-info-name font-base">{product.name}</h2>

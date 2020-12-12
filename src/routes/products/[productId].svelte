@@ -9,10 +9,11 @@
 <script>
 	export let product;
 
-	import { Cloudinary } from "cloudinary-core";
-
-	const cl = new Cloudinary({ cloud_name: "dmi84pjlo", secure: true });
+	import { image } from "svelte-cloudinary";
 </script>
 
 <h2>{product.name}</h2>
-<img src="{`ecomm-demo\/${product.image}.jpg`}" alt="" />
+<img
+	use:image="{{ src: `\/ecomm-demo\/${product.image}`, bind: true, lazy: true, options: { crop: 'lfill', gravity: 'auto' } }}"
+	alt="{`Product photo of ${product.name}`}"
+/>
