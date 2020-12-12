@@ -55,11 +55,11 @@
 	#product-detailed {
 		height: 65%;
 		width: 100%;
+		max-width: 500px;
 		padding-top: 3em;
 		padding-bottom: 1em;
 		border-radius: 25px 25px 0 0;
 		background: var(--color-primary-light);
-		left: 0;
 		bottom: 0;
 	}
 

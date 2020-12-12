@@ -23,7 +23,7 @@
 </svelte:head>
 
 <section id="products" class="products">
-	<div class="l-wrapper">
+	<div class="l-wrapper" style="width: 100%;">
 		<ul class="products-grid cards-list">
 			<li class="products-grid-feat">
 				<h1 class="font-xxxlarge">Featured Products</h1>
@@ -39,6 +39,8 @@
 <style>
 	.products {
 		margin-bottom: 10vh;
+		display: flex;
+		justify-content: center;
 	}
 
 	.products-grid {
