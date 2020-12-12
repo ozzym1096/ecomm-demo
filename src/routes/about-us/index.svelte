@@ -1,7 +1,8 @@
 <div class="flex-column" style="width: 100%;">
 	<span>our goal:</span>
 	<div>
-		<span>sell stuff</span>
+		<span>To sell stuff</span>
+		&nbsp;
 		<span class="emoji">¯\_(ツ)_/¯</span>
 	</div>
 </div>
