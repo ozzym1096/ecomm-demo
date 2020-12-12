@@ -2,7 +2,7 @@ import express from 'express';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
 
-const { PORT } = process.env;
+const { PORT, CLOUDINARY_NAME } = process.env;
 const app = express();
 
 app.use(
@@ -11,7 +11,11 @@ app.use(
 );
 
 app.use(
-	sapper.middleware()
+	sapper.middleware({
+		session: (req, res) => ({
+			CLOUDINARY_NAME
+		})
+	})
 );
 
 app.listen(PORT, (err) => {

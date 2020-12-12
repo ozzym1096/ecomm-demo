@@ -1,19 +1,21 @@
 <script context="module">
-	export async function preload() {
+	export async function preload(page, session) {
+		const { CLOUDINARY_NAME } = session;
 		const res = await this.fetch("products.json");
 		const data = await res.json();
-		return { products: data };
+		return { products: data, clName: CLOUDINARY_NAME };
 	}
 </script>
 
 <script>
 	export let products;
+	export let clName;
 
+	import { initialize } from "svelte-cloudinary";
 	import ProductCard from "../../components/ProductCard.svelte";
 	import ProductDialog from "../../components/ProductDialog.svelte";
-	import { Cloudinary } from "cloudinary-core";
 
-	const cl = new Cloudinary({ cloud_name: "dmi84pjlo", secure: true });
+	initialize({ cloud_name: clName });
 </script>
 
 <svelte:head>
@@ -27,7 +29,7 @@
 				<h1 class="font-xxxlarge">Featured Products</h1>
 			</li>
 			{#each products as product}
-				<ProductCard {product} {cl} />
+				<ProductCard {product} />
 			{/each}
 		</ul>
 	</div>
@@ -43,12 +45,12 @@
 		display: grid;
 		grid-row-gap: 1em;
 		grid-column-gap: 2em;
-		grid-auto-columns: minmax(auto, 1fr);
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 	}
 
 	.products-grid-feat {
 		width: 100%;
-		grid-area: 1 / 1 / span 1 / span 2;
+		grid-area: 1 / 1 / span 1 / span 1;
 		display: flex;
 		align-items: flex-end;
 		background-color: var(--color-secondary-light);

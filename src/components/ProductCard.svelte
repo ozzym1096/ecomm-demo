@@ -1,10 +1,4 @@
 <script>
-	import {
-		detailedProductVisibility,
-		currDetailedProduct,
-	} from "../utils/stores";
-	import { openDialog } from "../utils/classes/dialog";
-
 	/**
 	 * @type {{
 	 * 	id: string,
@@ -18,7 +12,13 @@
 	 * }}
 	 */
 	export let product;
-	export let cl;
+
+	import { image } from "svelte-cloudinary";
+	import {
+		detailedProductVisibility,
+		currDetailedProduct,
+	} from "../utils/stores";
+	import { openDialog } from "../utils/classes/dialog";
 </script>
 
 <li class="product-card">
@@ -33,9 +33,9 @@
 		}}"
 	>
 		<img
+			use:image="{{ src: `/ecomm-demo/${product.image}`, bind: '.product-card', lazy: true, options: { crop: 'lfill', gravity: 'auto' } }}"
 			class="product-card-image card-image"
-			src="{cl.url(`ecomm-demo\/${product.image}.jpg`)}"
-			alt=""
+			alt="{`Product photo of ${product.description}`}"
 		/>
 		<div class="product-card-info card-info">
 			<h2 class="product-card-info-name font-base">{product.name}</h2>
@@ -47,6 +47,7 @@
 <style>
 	.product-card {
 		width: 100%;
+		height: 10%;
 	}
 
 	.product-card-link {
@@ -56,8 +57,6 @@
 	}
 
 	.product-card-image {
-		height: auto;
-		width: 100%;
 		object-position: center;
 		object-fit: cover;
 	}
