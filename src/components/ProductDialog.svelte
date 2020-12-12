@@ -59,7 +59,7 @@
 		padding-top: 3em;
 		padding-bottom: 1em;
 		border-radius: 25px 25px 0 0;
-		background: var(--color-primary-light);
+		background: var(--color-orange-light);
 		bottom: 0;
 	}
 

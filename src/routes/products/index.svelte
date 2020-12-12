@@ -55,12 +55,12 @@
 		grid-area: 1 / 1 / span 1 / span 1;
 		display: flex;
 		align-items: flex-end;
-		background-color: var(--color-secondary-light);
-		color: var(--color-secondary-dark);
+		background-color: var(--color-blue-light);
+		color: var(--color-blue-dark);
 	}
 
 	.products-grid-feat > h1 {
-		width: min-width;
+		width: min-content;
 		margin-left: 0.5em;
 		margin-right: 0.5em;
 		margin-bottom: 0.5em;

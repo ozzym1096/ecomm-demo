@@ -1,13 +1,15 @@
 * {
 	--page-width-max: 1440px;
-	--hue-primary: 15;
-	--color-primary: hsl(var(--hue-primary), 100%, 43%);
-	--color-primary-light: hsl(var(--hue-primary), 100%, 99%);
-	--color-primary-dark: hsl(var(--hue-primary), 100%, 20%);
-	--hue-secondary: 195;
-	--color-secondary: hsl(var(--hue-secondary), 100%, 50%);
-	--color-secondary-light: hsl(var(--hue-secondary), 100%, 95%);
-	--color-secondary-dark: hsl(var(--hue-secondary), 100%, 20%);
+
+	--hue-orange: 15;
+	--hue-blue: 195;
+
+	--color-orange: hsl(var(--hue-orange), 100%, 43%);
+	--color-orange-light: hsl(var(--hue-orange), 100%, 99%);
+	--color-orange-dark: hsl(var(--hue-orange), 100%, 20%);
+	--color-blue: hsl(var(--hue-blue), 100%, 50%);
+	--color-blue-light: hsl(var(--hue-blue), 100%, 95%);
+	--color-blue-dark: hsl(var(--hue-blue), 100%, 20%);
 	--color-white: hsl(0, 0%, 100%);
 	--color-black: hsl(0, 0%, 10%);
 }
@@ -121,7 +123,7 @@ a > svg {
 	content: "";
 	width: 2px;
 	height: 100%;
-	background-color: var(--color-primary);
+	background-color: var(--color-orange);
 	display: block;
 	top: 0;
 	left: -7px;
@@ -168,7 +170,7 @@ a > svg {
 
 .dialog-toggle {
 	font-weight: 300;
-	color: var(--color-primary-dark);
+	color: var(--color-orange-dark);
 }
 
 /*

@@ -45,7 +45,7 @@
 
 	.main-header-logo {
 		font-weight: 600;
-		color: var(--color-primary);
+		color: var(--color-orange);
 		grid-area: logo;
 		justify-self: start;
 	}
@@ -53,13 +53,13 @@
 	.main-header-cart {
 		width: 2vw;
 		min-width: 25px;
-		fill: var(--color-primary);
+		fill: var(--color-orange);
 		grid-area: cart;
 		justify-self: end;
 	}
 
 	.main-header-nav {
-		background-color: var(--color-primary-light);
+		background-color: var(--color-orange-light);
 		grid-area: nav;
 		overflow: hidden;
 	}
