@@ -3,16 +3,17 @@
 	"description": "TODO",
 	"version": "1.0.0",
 	"scripts": {
-		"svelte-check": "svelte-check",
 		"dev": "dotenv sapper dev",
 		"build": "sapper build",
 		"export": "sapper export",
-		"start": "node __sapper__/build"
+		"start": "node __sapper__/build",
+		"svelte-check": "svelte-check"
 	},
 	"dependencies": {
 		"compression": "^1.7.1",
-		"express": "^4.17.1",
-		"pg": "^8.5.1"
+		"pg": "^8.5.1",
+		"polka": "^0.5.2",
+		"sirv": "^1.0.10"
 	},
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^15.1.0",

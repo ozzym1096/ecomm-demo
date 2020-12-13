@@ -1,23 +1,21 @@
-import express from 'express';
-import compression from 'compression';
-import * as sapper from '@sapper/server';
+import sirv from "sirv";
+import polka from "polka";
+import compression from "compression";
+import * as sapper from "@sapper/server";
 
-const { PORT, CLOUDINARY_NAME } = process.env;
-const app = express();
+const { PORT, NODE_ENV, CLOUDINARY_NAME } = process.env;
+const dev = NODE_ENV === "development";
 
-app.use(
-	compression({ threshold: 0 }),
-	express.static('static')
-);
-
-app.use(
-	sapper.middleware({
-		session: (req, res) => ({
-			CLOUDINARY_NAME
+polka()
+	.use(
+		compression({ threshold: 0 }),
+		sirv("static", { dev }),
+		sapper.middleware({
+			session: (req, res) => ({
+				CLOUDINARY_NAME
+			})
 		})
-	})
-);
-
-app.listen(PORT, (err) => {
-	if (err) console.log("error", err);
-});
+	)
+	.listen(PORT, err => {
+		if (err) console.log("error", err);
+	});
