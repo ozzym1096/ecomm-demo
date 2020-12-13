@@ -1,7 +1,7 @@
-import { Pool } from 'pg';
+import { Pool } from "pg";
 const pool = new Pool();
 
-pool.on('error', (err) => {
+pool.on("error", (err) => {
 	console.error(err);
 	process.exit(-1);
 });

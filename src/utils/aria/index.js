@@ -12,7 +12,7 @@ aria.KeyCode = {
 aria.Utils = {};
 
 aria.Utils.IgnoreUtilFocusChanges = false;
-aria.Utils.dialogOpenClass = 'dialog-is-open';
+aria.Utils.dialogOpenClass = "dialog-is-open";
 aria.OpenDialogList = new Array(0);
 
 aria.Utils.attemptFocus = function (element) {
@@ -54,12 +54,12 @@ aria.getCurrentDialog = function () {
 };
 
 aria.Utils.remove = function (item) {
-	if (item.remove && typeof item.remove === 'function') {
+	if (item.remove && typeof item.remove === "function") {
 		return item.remove();
 	}
 	if (item.parentNode &&
 		item.parentNode.removeChild &&
-		typeof item.parentNode.removeChild === 'function') {
+		typeof item.parentNode.removeChild === "function") {
 		return item.parentNode.removeChild(item);
 	}
 	return false;

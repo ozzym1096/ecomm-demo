@@ -1,17 +1,17 @@
-import resolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
-import commonjs from '@rollup/plugin-commonjs';
-import svelte from 'rollup-plugin-svelte';
-import { terser } from 'rollup-plugin-terser';
-import config from 'sapper/config/rollup.js';
-import pkg from './package.json';
+import resolve from "@rollup/plugin-node-resolve";
+import replace from "@rollup/plugin-replace";
+import commonjs from "@rollup/plugin-commonjs";
+import svelte from "rollup-plugin-svelte";
+import { terser } from "rollup-plugin-terser";
+import config from "sapper/config/rollup.js";
+import pkg from "./package.json";
 
-const mode = process.env.NODE_ENV || 'development';
-const dev = mode === 'development';
+const mode = process.env.NODE_ENV;
+const dev = mode === "development";
 
 const onwarn = (warning, onwarn) =>
-	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
-	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	(warning.code === "MISSING_EXPORT" && /'preload'/.test(warning.message)) ||
+	(warning.code === "CIRCULAR_DEPENDENCY" && /[/\\]@sapper[/\\]/.test(warning.message)) ||
 	onwarn(warning);
 
 export default {
@@ -20,8 +20,8 @@ export default {
 		output: config.client.output(),
 		plugins: [
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				"process.browser": true,
+				"process.env.NODE_ENV": JSON.stringify(mode)
 			}),
 			svelte({
 				dev,
@@ -30,7 +30,7 @@ export default {
 			}),
 			resolve({
 				browser: true,
-				dedupe: ['svelte']
+				dedupe: ["svelte"]
 			}),
 			commonjs(),
 			!dev && terser({
@@ -47,16 +47,16 @@ export default {
 		output: config.server.output(),
 		plugins: [
 			replace({
-				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				"process.browser": false,
+				"process.env.NODE_ENV": JSON.stringify(mode)
 			}),
 			svelte({
-				generate: 'ssr',
+				generate: "ssr",
 				hydratable: true,
 				dev
 			}),
 			resolve({
-				dedupe: ['svelte']
+				dedupe: ["svelte"]
 			}),
 			commonjs()
 		],
@@ -72,8 +72,8 @@ export default {
 		plugins: [
 			resolve(),
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				"process.browser": true,
+				"process.env.NODE_ENV": JSON.stringify(mode)
 			}),
 			commonjs(),
 			!dev && terser()
