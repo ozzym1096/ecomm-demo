@@ -5,7 +5,6 @@
 	 * 	name: string,
 	 * 	department: string,
 	 * 	price: number,
-	 * 	adjectives: string[],
 	 * 	materials: string[],
 	 * 	description: string,
 	 * 	image: string
@@ -33,12 +32,12 @@
 		}}"
 	>
 		<img
-			use:image="{{ src: `\/ecomm-demo\/${product.image}`, bind: '.product-card', lazy: true, options: { crop: 'lfill', gravity: 'auto' } }}"
-			class="product-card-image card-image"
+			use:image="{{ src: `\/ecomm-demo\/${product.image}`, bind: true, lazy: true, options: { crop: 'lfill', gravity: 'auto' } }}"
+			class="product-card-image card-content"
 			alt="{`Product photo of ${product.name}`}"
 		/>
-		<div class="product-card-info card-info">
-			<h2 class="product-card-info-name font-base">{product.name}</h2>
+		<div class="product-card-info card-info card-content">
+			<h2 class="product-card-info-name">{product.name}</h2>
 			<p>${product.price}</p>
 		</div>
 	</a>
@@ -47,21 +46,44 @@
 <style>
 	.product-card {
 		width: 100%;
-		height: 10%;
+		background-color: var(--color-orange-light);
+		border-radius: 15px;
+		box-shadow: 0px 0px 8px 1px #f4f4f4;
 	}
 
 	.product-card-link {
 		text-decoration: none;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.card-content {
+		margin-left: 5%;
 	}
 
 	.product-card-image {
+		width: 100px;
+		height: 125px;
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
 		object-position: center;
 		object-fit: cover;
 	}
 
+	.product-card-info {
+		max-width: 20ch;
+	}
+
 	.product-card-info-name {
+		font-size: var(--font-size-base);
+		font-weight: var(--font-weight-reg);
 		text-decoration: underline;
+	}
+
+	@media (min-width: 480px) {
+		.product-card-info {
+			max-width: initial;
+		}
 	}
 </style>
