@@ -78,6 +78,7 @@ a > svg {
 	margin-right: auto;
 	padding-left: var(--padding, 16px);
 	padding-right: var(--padding, 16px);
+	box-sizing: border-box;
 }
 
 .l-display-contents {
