@@ -3,9 +3,9 @@
 	"description": "TODO",
 	"version": "1.0.0",
 	"scripts": {
-		"dev": "dotenv sapper dev",
-		"build": "sapper build",
-		"export": "sapper export",
+		"dev": "cross-env NODE_ENV=development dotenv sapper dev",
+		"build": "cross-env NODE_ENV=production sapper build",
+		"export": "cross-env NODE_ENV=production sapper export",
 		"start": "node __sapper__/build",
 		"svelte-check": "svelte-check"
 	},
@@ -19,6 +19,7 @@
 		"@rollup/plugin-commonjs": "^15.1.0",
 		"@rollup/plugin-node-resolve": "^9.0.0",
 		"@rollup/plugin-replace": "^2.3.4",
+		"cross-env": "^7.0.3",
 		"dotenv-cli": "^3.2.0",
 		"rollup": "^2.34.2",
 		"rollup-plugin-svelte": "^6.1.1",
