@@ -1,12 +1,5 @@
 <script>
-	import { onMount } from "svelte";
 	import MainNavList from "../components/MainNavList.svelte";
-
-	let headerHeight;
-
-	onMount(() => {
-		headerHeight = document.getElementById("nav-main").clientHeight;
-	});
 </script>
 
 <header id="main-header" class="l-wrapper">
@@ -17,7 +10,7 @@
 <nav id="nav-main" class="l-wrapper" aria-label="Website categories">
 	<MainNavList />
 </nav>
-<main style="{`margin-bottom: ${headerHeight + 30}px;`}">
+<main>
 	<slot />
 </main>
 
@@ -26,8 +19,8 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		margin-top: 8%;
-		margin-bottom: 8%;
+		margin-top: 12%;
+		margin-bottom: 12%;
 	}
 
 	.main-header-logo {
@@ -43,7 +36,37 @@
 		right: 0;
 		bottom: 0;
 		z-index: 100;
-		background-color: var(--color-orange-dark);
-		box-shadow: 0px -1px 7px 0px #5e5e5e;
+		background-color: var(--color-orange-light);
+		box-shadow: 0px 5px 11px 0px #5e5e5e;
+	}
+
+	main {
+		margin-bottom: 25%;
+	}
+
+	@media (orientation: landscape) and (max-height: 500px) {
+		#main-header,
+		main {
+			width: 85%;
+			margin-left: initial;
+		}
+
+		#main-header {
+			margin-top: 7%;
+			margin-bottom: 7%;
+		}
+
+		#nav-main {
+			width: 15%;
+			height: 100%;
+			bottom: initial;
+			left: initial;
+			top: 0;
+			box-shadow: 5px 0px 11px 0px #5e5e5e;
+		}
+
+		main {
+			margin-bottom: 0;
+		}
 	}
 </style>

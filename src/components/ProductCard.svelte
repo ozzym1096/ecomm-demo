@@ -44,14 +44,8 @@
 </li>
 
 <style>
-	.product-card {
-		width: 100%;
-		background-color: var(--color-orange-light);
-		border-radius: 15px;
-		box-shadow: 0px 0px 8px 1px #f4f4f4;
-	}
-
 	.product-card-link {
+		border: 1px solid hsl(0deg 0% 95%);
 		text-decoration: none;
 		display: flex;
 		flex-direction: row;
@@ -65,8 +59,8 @@
 	.product-card-image {
 		width: 100px;
 		height: 125px;
-		margin-top: 0.5rem;
-		margin-bottom: 0.5rem;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
 		object-position: center;
 		object-fit: cover;
 	}
