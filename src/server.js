@@ -11,7 +11,7 @@ polka()
 		compression({ threshold: 0 }),
 		sirv("static", { dev }),
 		sapper.middleware({
-			session: (req, res) => ({
+			session: (_req, _res) => ({
 				CLOUDINARY_NAME
 			})
 		})

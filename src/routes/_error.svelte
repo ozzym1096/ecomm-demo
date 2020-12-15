@@ -24,8 +24,8 @@
 	}
 
 	h1 {
-		font-size: 2.8em;
-		font-weight: 700;
+		font-size: var(--font-xlarge);
+		font-weight: var(--font-weight-bolder);
 		margin: 0 0 0.5em 0;
 	}
 
@@ -35,7 +35,7 @@
 
 	@media (min-width: 480px) {
 		h1 {
-			font-size: 4em;
+			font-size: var(--font-size-xxxxlarge);
 		}
 	}
 </style>

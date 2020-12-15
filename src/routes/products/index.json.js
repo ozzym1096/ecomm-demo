@@ -1,6 +1,6 @@
 import db from "../../utils/db";
 
-export async function get(req, res, next) {
+export async function get(_req, res, next) {
 	try {
 		const { rows } = await db.query("select * from products");
 		res.writeHead(200, { "Content-Type": "application/json" });

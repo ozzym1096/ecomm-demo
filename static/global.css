@@ -7,11 +7,23 @@
 	--color-orange: hsl(var(--hue-orange), 100%, 43%);
 	--color-orange-light: hsl(var(--hue-orange), 100%, 99%);
 	--color-orange-dark: hsl(var(--hue-orange), 100%, 20%);
-	--color-blue: hsl(var(--hue-blue), 100%, 50%);
+	--color-blue: hsl(var(--hue-blue), 100%, 65%);
 	--color-blue-light: hsl(var(--hue-blue), 100%, 95%);
 	--color-blue-dark: hsl(var(--hue-blue), 100%, 20%);
 	--color-white: hsl(0, 0%, 100%);
 	--color-black: hsl(0, 0%, 10%);
+
+	--font-size-xxxxlarge: 4.209rem;
+	--font-size-xxxlarge: 3.157rem;
+	--font-size-xxlarge: 2.369rem;
+	--font-size-xlarge: 1.777rem;
+	--font-size-large: 1.333rem;
+	--font-size-base: 1rem;
+	--font-size-small: 0.75rem;
+
+	--font-weight-boldest: 800;
+	--font-weight-bolder: 600;
+	--font-weight-reg: 400;
 }
 
 /*
@@ -22,73 +34,17 @@
  *
  */
 
-.font-xxxxlarge {
-	font-size: 32.44px;
-	line-height: calc(1ex / 0.42);
-	margin: calc(1ex / 0.42) 0;
-}
-
-.font-xxxlarge {
-	font-size: 28.83px;
-	line-height: calc(1ex / 0.42);
-	margin: calc(1ex / 0.42) 0;
-}
-
-.font-xxlarge {
-	font-size: 25.63px;
-	line-height: calc(1ex / 0.38);
-	margin: calc(1ex / 0.38) 0;
-}
-
-.font-xlarge {
-	font-size: 22.78px;
-	line-height: calc(1ex / 0.38);
-	margin: calc(1ex / 0.38) 0;
-}
-
-.font-large {
-	font-size: 20.25px;
-	line-height: calc(1ex / 0.37);
-	margin: calc(1ex / 0.37) 0;
-}
-
-.font-base {
-	font-size: 18px;
-	line-height: calc(1ex / 0.32);
-}
-
-.font-small {
-	font-size: 16px;
-	line-height: calc(1ex / 0.32);
-}
-
-.font-xsmall {
-	font-size: 14.22px;
-	line-height: calc(1ex / 0.32);
-}
-
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding-top: 0;
-	padding-bottom: 0;
-	padding-left: 0;
-	padding-right: 0;
-	margin-top: -1px;
-	margin-bottom: -1px;
-	margin-left: -1px;
-	margin-right: -1px;
-	overflow: hidden;
-	clip: rect(0,0,0,0);
-	border: 0;
+html {
+	font-size: 112.5%;
 }
 
 body {
 	color: var(--color-black);
 	background-color: var(--color-white);
 	font-family: "Open Sans", sans-serif;
-	font-weight: 400;
+	font-weight: var(--font-weight-reg);
+	line-height: 1.5;
+	margin: 0;
 }
 
 main {
@@ -97,7 +53,7 @@ main {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 600;
+	font-weight: var(--font-weight-bolder);
 }
 
 a {
@@ -106,27 +62,6 @@ a {
 
 a > svg {
 	pointer-events: none;
-}
-
-.nav-list,
-.cards-list {
-	padding-left: 0;
-	list-style-type: none;
-}
-
-[aria-current] > span {
-	position: relative;
-}
-
-[aria-current] > span::after {
-	position: absolute;
-	content: "";
-	width: 2px;
-	height: 100%;
-	background-color: var(--color-orange);
-	display: block;
-	top: 0;
-	left: -7px;
 }
 
 /*
@@ -157,6 +92,12 @@ a > svg {
  *
  */
 
+.nav-list,
+.cards-list {
+	padding-left: 0;
+	list-style-type: none;
+}
+
 .dialog {
 	position: absolute;
 	visibility: hidden;
@@ -169,7 +110,7 @@ a > svg {
 }
 
 .dialog-toggle {
-	font-weight: 300;
+	font-weight: var(--font-weight-regular);
 	color: var(--color-orange-dark);
 }
 
@@ -205,7 +146,7 @@ a > svg {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 998;
+	z-index: 200;
 	background: var(--color-black);
 	cursor: default;
 	opacity: 0.5;
@@ -227,3 +168,19 @@ a > svg {
  *
  */
 
+ .is-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	margin-top: -1px;
+	margin-bottom: -1px;
+	margin-left: -1px;
+	margin-right: -1px;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	border: 0;
+}

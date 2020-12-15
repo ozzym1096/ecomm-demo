@@ -16,7 +16,7 @@
 	}
 
 	span {
-		font-size: 50px;
+		font-size: var(--font-size-xxxlarge);
 		margin-top: 2em;
 	}
 </style>
