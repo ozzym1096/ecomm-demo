@@ -16,7 +16,6 @@
 
 	import { initialize } from "svelte-cloudinary";
 	import ProductCard from "../../components/ProductCard.svelte";
-	import ProductDialog from "../../components/ProductDialog.svelte";
 
 	initialize({ cloud_name: clName });
 </script>
@@ -40,7 +39,6 @@
 			{/each}
 		</ul>
 	</div>
-	<ProductDialog />
 </section>
 
 <style>

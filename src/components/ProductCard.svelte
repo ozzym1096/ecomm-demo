@@ -13,26 +13,12 @@
 	export let product;
 
 	import { image } from "svelte-cloudinary";
-	import {
-		detailedProductVisibility,
-		currDetailedProduct,
-	} from "../utils/stores";
-	import { openDialog } from "../utils/classes/dialog";
 </script>
 
 <li class="product-card">
-	<a
-		class="product-card-link"
-		href="/products/{product.id}"
-		on:click|preventDefault="{(e) => {
-			currDetailedProduct.set(product);
-			openDialog(detailedProductVisibility, document.getElementById('product-detailed'), e.target, document
-					.getElementById('product-detailed')
-					.querySelector('a'));
-		}}"
-	>
+	<a class="product-card-link" href="/products/{product.id}">
 		<img
-			use:image="{{ src: `\/ecomm-demo\/${product.image}`, bind: true, lazy: true, options: { crop: 'lfill', gravity: 'auto' } }}"
+			use:image="{{ src: `\/ecomm-demo\/${product.image}`, bind: this, lazy: true, options: { crop: 'lfill', gravity: 'auto' } }}"
 			class="product-card-image card-content"
 			alt="{`Product photo of ${product.name}`}"
 		/>
