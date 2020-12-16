@@ -22,7 +22,7 @@
 </script>
 
 <svelte:head>
-	<title>Products - Craaaiiig's</title>
+	<title>All Products - Craaaiiig's</title>
 	<meta
 		name="Description"
 		content="List of all products offered by Craaaiiig's"

@@ -52,8 +52,8 @@
 		}
 
 		#main-header {
-			margin-top: 7%;
-			margin-bottom: 7%;
+			margin-top: 5%;
+			margin-bottom: 5%;
 		}
 
 		#nav-main {
