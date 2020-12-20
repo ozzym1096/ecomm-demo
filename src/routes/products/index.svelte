@@ -35,7 +35,7 @@
 				<h1 class="products-grid-feat-text">Featured Products</h1>
 			</li>
 			{#each products as product}
-				<ProductCard {product} />
+				<ProductCard product="{product}" />
 			{/each}
 		</ul>
 	</div>
