@@ -18,11 +18,14 @@
 <li class="product-card">
 	<a class="product-card-link" href="/products/{product.id}">
 		<div class="product-card-image card-content">
-			<img
-				use:image="{{ src: `\/ecomm-demo\/${product.image}`, bind: '.product-card-image', lazy: true, options: { crop: 'lfill', gravity: 'auto' } }}"
-				style="width: 100%; height: 100%;"
-				alt="{`Product photo of ${product.name}`}"
-			/>
+			<div class="product-card-image-arbox"></div>
+			<div class="product-card-image-content">
+				<img
+					use:image="{{ src: `\/ecomm-demo\/${product.image}`, bind: '.product-card-image-content', step: 5, lazy: true, options: { crop: 'fill', gravity: 'auto' } }}"
+					style="width: 100%; height: 100%;"
+					alt="{`Product photo of ${product.name}`}"
+				/>
+			</div>
 		</div>
 		<div class="product-card-info card-info card-content">
 			<h2 class="product-card-info-name">{product.name}</h2>
@@ -45,14 +48,28 @@
 	}
 
 	.product-card-image {
-		width: 100px;
-		height: 125px;
+		width: 28%;
+		position: relative;
+		box-sizing: border-box;
 		margin-top: 1rem;
 		margin-bottom: 1rem;
 	}
 
+	.product-card-image-arbox {
+		padding-bottom: 125%;
+	}
+
+	.product-card-image-content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
 	.product-card-info {
 		max-width: 20ch;
+		flex-grow: 1;
 	}
 
 	.product-card-info-name {
