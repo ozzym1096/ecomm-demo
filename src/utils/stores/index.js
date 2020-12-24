@@ -1,1 +1,0 @@
-export { mainMenuPages } from "./mainMenuPages";
