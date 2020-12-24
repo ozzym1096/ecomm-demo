@@ -99,6 +99,37 @@ a > svg {
 	list-style-type: none;
 }
 
+.button-cart {
+	font-size: var(--font-size-base);
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+.breadcrumb {
+	font-size: var(--font-size-small);
+}
+
+.breadcrumb-list {
+	padding-left: 0;
+	list-style: none;
+}
+
+.breadcrumb-item {
+	display: inline;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+	content: '';
+	display: inline-block;
+	margin-left: 0.25em;
+	margin-right: 0.25em;
+	height: 0.8em;
+	border-right: 0.1em solid currentcolor;
+	transform: rotate(15deg);
+}
+
 /*
  *
  *
