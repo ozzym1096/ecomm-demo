@@ -1,10 +1,10 @@
-<div class="flex-column" style="width: 100%;">
-	<span>our goal:</span>
-	<div>
-		<span>To sell stuff</span>
-		&nbsp;
+<div class="flex-column">
+	<p>our goal:</p>
+	<br />
+	<p class="content">
+		To sell stuff &nbsp;
 		<span class="emoji">¯\_(ツ)_/¯</span>
-	</div>
+	</p>
 </div>
 
 <style>
@@ -15,8 +15,12 @@
 		align-items: center;
 	}
 
+	p,
 	span {
-		font-size: var(--font-size-xxxlarge);
-		margin-top: 2em;
+		font-size: var(--font-size-xxlarge);
+	}
+
+	.content {
+		text-align: center;
 	}
 </style>
