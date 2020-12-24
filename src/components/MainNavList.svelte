@@ -17,8 +17,8 @@
 	<li class="nav-list-item l-display-contents">
 		<a
 			class="nav-list-item-content"
-			href="/about-us"
-			aria-current="{$page.path === '/about-us' ? 'page' : undefined}"
+			href="/about"
+			aria-current="{$page.path === '/about' ? 'page' : undefined}"
 		>
 			<span>about</span>
 		</a>
@@ -26,8 +26,8 @@
 	<li class="nav-list-item l-display-contents">
 		<a
 			class="nav-list-item-content"
-			href="/contact-us"
-			aria-current="{$page.path === '/contact-us' ? 'page' : undefined}"
+			href="/contact"
+			aria-current="{$page.path === '/contact' ? 'page' : undefined}"
 		>
 			<span>contact</span>
 		</a>
