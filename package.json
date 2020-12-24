@@ -27,7 +27,7 @@
 		"sapper": "^0.28.10",
 		"svelte": "^3.31.0",
 		"svelte-check": "^0.1.59",
-		"svelte-cloudinary": "^0.2.2",
+		"svelte-cloudinary": "^0.2.3",
 		"svelte-stars-rating": "^1.0.3"
 	}
 }
