@@ -18,9 +18,10 @@
 	#main-header {
 		display: flex;
 		flex-direction: row;
+		justify-content: center;
 		align-items: center;
-		margin-top: 12%;
-		margin-bottom: 12%;
+		margin-top: 9%;
+		margin-bottom: 9%;
 	}
 
 	.main-header-logo {
@@ -37,7 +38,7 @@
 		bottom: 0;
 		z-index: 100;
 		background-color: var(--color-orange-light);
-		box-shadow: 0px 5px 11px 0px #5e5e5e;
+		box-shadow: 0px 7px 11px 0px #5e5e5e;
 	}
 
 	main {
@@ -62,7 +63,7 @@
 			bottom: initial;
 			left: initial;
 			top: 0;
-			box-shadow: 5px 0px 11px 0px #5e5e5e;
+			box-shadow: 7px 0px 11px 0px #5e5e5e;
 		}
 
 		main {
