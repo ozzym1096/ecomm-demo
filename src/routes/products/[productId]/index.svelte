@@ -34,7 +34,7 @@
 			<li class="breadcrumb-item"><a href="products">Products</a></li>
 			<li class="breadcrumb-item">
 				<a
-					href="{`products/${product.department}`}"
+					href="{`products?department=${product.department}`}"
 				>{product.department}</a>
 			</li>
 		</ol>

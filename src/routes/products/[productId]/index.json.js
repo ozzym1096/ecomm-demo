@@ -1,4 +1,4 @@
-import db from "../../utils/db";
+import db from "../../../utils/db";
 
 export async function get(req, res, next) {
 	try {
