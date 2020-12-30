@@ -4,8 +4,8 @@
 	"version": "1.0.0",
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development dotenv sapper dev",
-		"build": "cross-env NODE_ENV=production sapper build",
-		"export": "cross-env NODE_ENV=production sapper export",
+		"build": "sapper build",
+		"export": "sapper --basepath ecomm-demo export",
 		"start": "node __sapper__/build",
 		"svelte-check": "svelte-check"
 	},
