@@ -1,7 +1,12 @@
 # ecomm-demo
-eCommerce front-end and back-end demo
+This demo app includes the front end and back end for an ecommerce store.
+It's being built from scratch, so there are lots of opportunities for beginners to practice their coding skills!
 
-Please submit PRs for any suggestions about the code. I'm still in the phase where I question the efficiency of every line of code :).
-
-TODO
-- [ ] Add to todos
+## Built with:
+* [Sapper](https://sapper.svelte.dev)
+* [Svelte](https://svelte.dev)
+* [PostgreSQL DB](https://postgresql.org)
+  * Connects to DB using [pg](https://npmjs.com/package/pg)
+  
+## Contributing
+Just fork the repo and submit a PR when ready
