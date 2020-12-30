@@ -1,7 +1,20 @@
 <script context="module">
-	export async function preload(_page, session) {
+	export async function preload(page, session) {
 		const { CLOUDINARY_NAME } = session;
-		const res = await this.fetch("products.json");
+		const queryString = [];
+		if (page.query.materials) console.log(page.query.materials);
+		for (let query in page.query) {
+			queryString.push(
+				`${query}=${page.query[query]
+					.toLowerCase()
+					.replace(/^\w/, (f) => f.toUpperCase())}`
+			);
+		}
+		const res = await this.fetch(
+			`products.json${
+				queryString.length === 0 ? "" : "?" + queryString.join("&")
+			}`
+		);
 		const data = await res.json();
 		return {
 			products: data,
@@ -34,9 +47,15 @@
 			<li class="products-grid-feat">
 				<h1 class="products-grid-feat-text">Featured Products</h1>
 			</li>
-			{#each products as product}
-				<ProductCard product="{product}" />
-			{/each}
+			{#if products.length}
+				{#each products as product}
+					<ProductCard product="{product}" />
+				{/each}
+			{:else}
+				<li>
+					<h1>There are no matching products</h1>
+				</li>
+			{/if}
 		</ul>
 	</div>
 </section>
