@@ -5,7 +5,7 @@ It's being built from scratch, so there are lots of opportunities for beginners 
 ## Built with:
 * [Sapper](https://sapper.svelte.dev)
 * [Svelte](https://svelte.dev)
-* [PostgreSQL DB](https://postgresql.org)
+* [PostgreSQL](https://postgresql.org) DB
   * Connects to DB using [pg](https://npmjs.com/package/pg)
   
 ## Contributing
