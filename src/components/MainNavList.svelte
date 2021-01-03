@@ -33,7 +33,7 @@
 		</a>
 	</li>
 	<li class="nav-list-item l-display-contents">
-		<div class="nav-list-item-content">
+		<a class="nav-list-item-content" href="/cart">
 			<svg
 				class="svg-cart"
 				xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@
 					0 20.92-7.754 23.403-18.681z"
 				></path>
 			</svg>
-		</div>
+		</a>
 	</li>
 </ul>
 

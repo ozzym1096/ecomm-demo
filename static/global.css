@@ -124,7 +124,7 @@ a > svg {
 	content: '';
 	display: inline-block;
 	margin-left: 0.25em;
-	margin-right: 0.25em;
+	margin-right: 0.55em;
 	height: 0.8em;
 	border-right: 0.1em solid currentcolor;
 	transform: rotate(15deg);

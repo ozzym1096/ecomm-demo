@@ -21,7 +21,7 @@
 			<div class="product-card-image-arbox"></div>
 			<div class="product-card-image-content">
 				<img
-					use:image="{{ src: `\/ecomm-demo\/${product.image}`, bind: '.product-card-image-content', step: 5, lazy: true, options: { crop: 'fill', gravity: 'auto' } }}"
+					use:image="{{ src: `\/ecomm-demo\/products\/${product.image}`, bind: '.product-card-image-content', step: 5, lazy: true, options: { crop: 'fill', gravity: 'auto' } }}"
 					style="width: 100%; height: 100%;"
 					alt="{`Product photo of ${product.name}`}"
 				/>

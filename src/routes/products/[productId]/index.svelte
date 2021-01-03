@@ -1,9 +1,11 @@
 <script context="module">
 	export async function preload(page, session) {
 		const { CLOUDINARY_NAME } = session;
+
 		const res = await this.fetch(`products/${page.params.productId}.json`);
 		const data = await res.json();
-		return { product: data, clName: CLOUDINARY_NAME };
+
+		return { product: data, cloud_name: CLOUDINARY_NAME };
 	}
 </script>
 
@@ -20,13 +22,17 @@
 	 * }}
 	 */
 	export let product;
-	export let clName;
+	export let cloud_name;
 
 	import { initialize, image } from "svelte-cloudinary";
 	import StarRating from "svelte-stars-rating";
 
-	initialize({ cloud_name: clName });
+	initialize({ cloud_name });
 </script>
+
+<svelte:head>
+	<title>{product.name} - Craaaiiig's</title>
+</svelte:head>
 
 <div class="l-wrapper">
 	<nav aria-label="Breadcrumb" class="breadcrumb">
@@ -46,7 +52,7 @@
 			<div class="product-image-arbox"></div>
 			<div class="product-image-content">
 				<img
-					use:image="{{ src: `\/ecomm-demo\/${product.image}`, bind: '.product-image-content', step: 100, lazy: false, options: { crop: 'lfill', gravity: 'auto' } }}"
+					use:image="{{ src: `\/ecomm-demo\/products\/${product.image}`, bind: '.product-image-content', step: 100, lazy: false, options: { crop: 'lfill', gravity: 'auto' } }}"
 					style="width: 100%; height: 100%;"
 					alt="{`Photo of ${product.name}`}"
 				/>
@@ -76,6 +82,11 @@
 			<h3 class="product-description-slogan">Product Sales Pitch:</h3>
 			<p class="product-description-text">{product.description}</p>
 		</div>
+		<ul>
+			{#each product.materials as material}
+				<li>{material}</li>
+			{/each}
+		</ul>
 	</article>
 </div>
 
