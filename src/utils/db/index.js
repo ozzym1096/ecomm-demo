@@ -1,5 +1,12 @@
 import { Pool } from "pg";
-const pool = new Pool();
+
+const pool = new Pool({
+	connectionString: process.env.DATABASE_URL,
+	// Comment out when testing locally
+	ssl: {
+		rejectUnauthorized: false
+	}
+});
 
 pool.on("error", (err) => {
 	console.error(err);
