@@ -9,4 +9,4 @@ It's being built from scratch, so there are lots of opportunities for beginners 
   * Connects to DB using [pg](https://npmjs.com/package/pg)
   
 ## Contributing
-Just fork the repo and submit a PR when ready
+Go to [CONTRIBUING.md](CONTRIBUTING.md)
