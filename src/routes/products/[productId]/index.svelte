@@ -186,6 +186,10 @@
 			grid-column-gap: 4vw;
 		}
 
+		.product-image {
+			grid-area: 1 / 1 / span 6 / span 1;
+		}
+
 		.product-id {
 			grid-area: 1 / 2 / span 1 / span 1;
 		}
@@ -194,8 +198,12 @@
 			grid-area: 2 / 2 / span 1 / span 1;
 		}
 
-		.product-image {
-			grid-area: 1 / 1 / span 6 / span 1;
+		.container-price-and-rating {
+			margin-bottom: 3vh;
+		}
+
+		.container-quantity-and-cart {
+			margin-bottom: 4vh;
 		}
 	}
 </style>
