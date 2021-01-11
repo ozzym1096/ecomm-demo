@@ -7,7 +7,7 @@ Live Demo: https://ecomm-demo-23423.herokuapp.com
 ## Built with:
 * [Sapper](https://sapper.svelte.dev)
 * [Svelte](https://svelte.dev)
-* [PostgreSQL](https://postgresql.org) DB
+* [PostgreSQL](https://postgresql.org)
   
 ## Contributing
 Go to [CONTRIBUING.md](CONTRIBUTING.md)
