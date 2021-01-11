@@ -83,4 +83,26 @@
 			max-width: initial;
 		}
 	}
+
+	@media (min-width: 671px) and (min-height: 501px) {
+		.product-card-link {
+			border: initial;
+		}
+
+		.card-content {
+			margin-left: 0;
+		}
+
+		.product-card-link {
+			flex-direction: column;
+		}
+
+		.product-card-image {
+			width: 100%;
+		}
+
+		.product-card-info {
+			width: 100%;
+		}
+	}
 </style>

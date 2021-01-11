@@ -1,5 +1,5 @@
 * {
-	--page-width-max: 1440px;
+	--page-width-max: 1110px;
 
 	--hue-orange: 15;
 	--hue-blue: 195;
@@ -36,14 +36,14 @@
 
 html {
 	font-size: 112.5%;
-}
-
-body {
 	color: var(--color-black);
-	background-color: var(--color-orange-light);
 	font-family: "Open Sans", sans-serif;
 	font-weight: var(--font-weight-reg);
 	line-height: 1.5;
+}
+
+body {
+	background-color: var(--color-orange-light);
 	margin: 0;
 }
 
@@ -56,12 +56,23 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: var(--font-weight-bolder);
 }
 
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 a {
 	color: inherit;
 }
 
 a > svg {
 	pointer-events: none;
+}
+
+button {
+	color: var(--color-black);
+	font-family: "Open Sans", sans-serif;
+	font-weight: var(--font-weight-reg);
 }
 
 /*
@@ -97,14 +108,6 @@ a > svg {
 .cards-list {
 	padding-left: 0;
 	list-style-type: none;
-}
-
-.button-cart {
-	font-size: var(--font-size-base);
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
 }
 
 .breadcrumb {

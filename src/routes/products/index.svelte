@@ -43,36 +43,35 @@
 </svelte:head>
 
 <section id="products" class="products">
-	<div class="l-wrapper">
-		<div class="products-grid-feat">
-			<h1 class="products-grid-feat-text">Featured Products</h1>
-		</div>
-		<button type="button">Filter</button>
-		<ul class="products-grid cards-list">
-			{#if products.length}
-				{#each products as product}
-					<ProductCard product="{product}" />
-				{/each}
-			{:else}
-				<li>
-					<h1>There are no matching products</h1>
-				</li>
-			{/if}
-		</ul>
+	<div class="products-grid-feat">
+		<h1 class="products-grid-feat-text">Featured Products</h1>
 	</div>
+	<button class="button-filter" type="button">Filter</button>
+	<ul class="products-grid cards-list">
+		{#if products.length}
+			{#each products as product}
+				<ProductCard product="{product}" />
+			{/each}
+		{:else}
+			<li>
+				<h1>There are no matching products</h1>
+			</li>
+		{/if}
+	</ul>
 </section>
 
 <style>
 	.products-grid {
 		display: grid;
-		grid-row-gap: 1rem;
-		grid-column-gap: 2rem;
+		grid-row-gap: 1vh;
+		grid-column-gap: 2vw;
 	}
 
 	.products-grid-feat {
 		width: 100%;
 		background-color: var(--color-blue-light);
 		color: var(--color-blue-dark);
+		margin-bottom: 5vh;
 	}
 
 	.products-grid-feat-text {
@@ -80,9 +79,35 @@
 		font-weight: var(--font-weight-boldest);
 		line-height: 1.3;
 		width: min-content;
-		margin-left: 0.5em;
-		margin-right: 0.5em;
-		padding-bottom: 0.5em;
-		padding-top: 50px;
+		padding-left: 6vw;
+		padding-bottom: 3vh;
+		padding-top: 7vh;
+	}
+
+	.button-filter {
+		margin-bottom: 5vh;
+	}
+
+	@media (orientation: landscape) and (max-height: 500px) {
+		.products-grid {
+			grid-row-gap: 3vh;
+		}
+
+		.products-grid-feat-text {
+			padding-left: 5vh;
+		}
+	}
+
+	@media (min-width: 671px) and (min-height: 501px) {
+		.products-grid {
+			grid-template-columns: repeat(auto-fit, minmax(120px, 170px));
+			justify-content: center;
+		}
+
+		.products-grid-feat-text {
+			font-size: var(--font-size-xxlarge);
+			padding-left: 4vh;
+			padding-top: 7vh;
+		}
 	}
 </style>

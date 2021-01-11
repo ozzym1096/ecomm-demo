@@ -5,35 +5,39 @@
 </script>
 
 <ul class="nav-list">
-	<li class="nav-list-item l-display-contents">
+	<li class="nav-list-item">
 		<a
-			class="nav-list-item-content"
+			class="nav-list-item-link"
 			href="/products"
 			aria-current="{$page.path === '/products' ? 'page' : undefined}"
 		>
 			<span>products</span>
 		</a>
 	</li>
-	<li class="nav-list-item l-display-contents">
+	<li class="nav-list-item">
 		<a
-			class="nav-list-item-content"
+			class="nav-list-item-link"
 			href="/about"
 			aria-current="{$page.path === '/about' ? 'page' : undefined}"
 		>
 			<span>about</span>
 		</a>
 	</li>
-	<li class="nav-list-item l-display-contents">
+	<li class="nav-list-item">
 		<a
-			class="nav-list-item-content"
+			class="nav-list-item-link"
 			href="/contact"
 			aria-current="{$page.path === '/contact' ? 'page' : undefined}"
 		>
 			<span>contact</span>
 		</a>
 	</li>
-	<li class="nav-list-item l-display-contents">
-		<a class="nav-list-item-content" href="/cart">
+	<li class="nav-list-item">
+		<a
+			class="nav-list-item-link"
+			href="/cart"
+			aria-current="{$page.path === '/cart' ? 'page' : undefined}"
+		>
 			<svg
 				class="svg-cart"
 				xmlns="http://www.w3.org/2000/svg"
@@ -57,8 +61,10 @@
 </ul>
 
 <style>
-	[aria-current] > span {
+	[aria-current] > span,
+	[aria-current] > svg {
 		color: var(--color-blue-dark);
+		fill: var(--color-blue-dark);
 		font-weight: var(--font-weight-boldest);
 	}
 
@@ -66,25 +72,32 @@
 		margin: 0;
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		grid-column-gap: 2%;
 		justify-content: center;
 		align-items: center;
 	}
 
-	.nav-list-item-content {
+	.nav-list-item {
 		color: var(--color-orange-dark);
 		font-size: var(--font-size-small);
 		font-weight: var(--font-weight-bolder);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding-top: 25%;
-		padding-bottom: 25%;
+		margin-top: 0.6vh;
+		margin-bottom: 0.6vh;
+	}
+
+	.nav-list-item-link {
+		min-width: 50px;
+		display: flex;
+		justify-content: center;
+		padding-top: 2.5vh;
+		padding-bottom: 2.5vh;
 	}
 
 	.svg-cart {
-		width: 2vw;
-		min-width: 25px;
+		height: calc(var(--font-size-base) + 2px);
+		display: block;
 		fill: var(--color-orange-dark);
 	}
 
@@ -93,13 +106,22 @@
 			height: 100%;
 			grid-template-columns: initial;
 			grid-template-rows: repeat(4, 1fr);
-			grid-column-gap: initial;
-			grid-row-gap: initial;
 		}
 
-		.nav-list-item {
-			padding-top: 28%;
-			padding-bottom: 28%;
+		.nav-list-item-link {
+			padding-top: 3vw;
+			padding-bottom: 3vw;
+		}
+	}
+
+	@media (min-width: 671px) and (min-height: 501px) {
+		.nav-list {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.nav-list-item:not(:first-child) {
+			margin-left: 2rem;
 		}
 	}
 </style>

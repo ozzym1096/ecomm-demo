@@ -5,13 +5,15 @@
 <header id="main-header" class="l-wrapper">
 	<div class="l-display-contents">
 		<a class="main-header-logo" href="/">Craaaiiig's</a>
+		<nav id="nav-main" aria-label="Website categories">
+			<MainNavList />
+		</nav>
 	</div>
 </header>
-<nav id="nav-main" class="l-wrapper" aria-label="Website categories">
-	<MainNavList />
-</nav>
 <main>
-	<slot />
+	<div class="l-wrapper">
+		<slot />
+	</div>
 </main>
 
 <style>
@@ -20,8 +22,8 @@
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-		margin-top: 9%;
-		margin-bottom: 9%;
+		margin-top: 5vh;
+		margin-bottom: 5vh;
 	}
 
 	.main-header-logo {
@@ -42,19 +44,19 @@
 	}
 
 	main {
-		margin-bottom: 25%;
+		margin-bottom: 12vh;
 	}
 
 	@media (orientation: landscape) and (max-height: 500px) {
 		#main-header,
 		main {
 			width: 85%;
-			margin-left: initial;
 		}
 
 		#main-header {
-			margin-top: 5%;
-			margin-bottom: 5%;
+			margin-left: initial;
+			margin-top: 9vh;
+			margin-bottom: 7vh;
 		}
 
 		#nav-main {
@@ -67,7 +69,30 @@
 		}
 
 		main {
-			margin-bottom: 0;
+			margin-bottom: 3vh;
+		}
+	}
+
+	@media (min-width: 671px) and (min-height: 501px) {
+		header,
+		main {
+			--padding: 5vw;
+		}
+
+		#main-header {
+			justify-content: space-between;
+			margin-top: 4vh;
+			margin-bottom: 3vh;
+		}
+
+		#nav-main {
+			display: contents;
+			box-shadow: initial;
+			background-color: initial;
+		}
+
+		main {
+			margin-bottom: 5vh;
 		}
 	}
 </style>
