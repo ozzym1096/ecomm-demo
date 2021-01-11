@@ -8,7 +8,6 @@ Live Demo: https://ecomm-demo-23423.herokuapp.com
 * [Sapper](https://sapper.svelte.dev)
 * [Svelte](https://svelte.dev)
 * [PostgreSQL](https://postgresql.org) DB
-  * Connects to DB using [pg](https://npmjs.com/package/pg)
   
 ## Contributing
 Go to [CONTRIBUING.md](CONTRIBUTING.md)
