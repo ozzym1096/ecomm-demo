@@ -3,6 +3,7 @@
 	"description": "TODO",
 	"version": "1.0.0",
 	"scripts": {
+		"dbSetup": "dotenv node dbSetup.mjs",
 		"dev": "dotenv sapper dev",
 		"build": "sapper build",
 		"start": "node __sapper__/build",
@@ -19,6 +20,8 @@
 		"@rollup/plugin-commonjs": "^15.1.0",
 		"@rollup/plugin-node-resolve": "^9.0.0",
 		"@rollup/plugin-replace": "^2.3.4",
+		"axios": "^0.21.1",
+		"cloudinary": "^1.23.0",
 		"dotenv-cli": "^3.2.0",
 		"rollup": "^2.35.1",
 		"rollup-plugin-svelte": "^6.1.1",
