@@ -18,7 +18,7 @@ Live Demo: https://ecomm-demo-23423.herokuapp.com
 3. Install PostgreSQL if it isn't already installed on your local machine; Installers are located at https://www.postgresql.org/download/
 4. Create a database using the syntax `createdb name`
 5. Create a .env file using the variable names that are in .env.example and input the values
-	1. Make sure to percent-encode any special characters for the DATABASE_URI
+	1. Make sure to percent-encode any special characters for the DATABASE_URL
 6. In `src/utils/db/index.js`, comment out the ssl property in the Pool constructor
 7. `npm install`
 8. `npm run dbSetup`

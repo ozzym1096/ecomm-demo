@@ -11,7 +11,7 @@ cloudinary.config({
 });
 
 const client = new pg.Client({
-	connectionString: process.env.DATABASE_URI
+	connectionString: process.env.DATABASE_URL
 });
 
 ; (async () => {
