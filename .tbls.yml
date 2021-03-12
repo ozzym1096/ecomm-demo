@@ -1,0 +1,2 @@
+dsn: postgres://postgres:Spartans%2311@localhost:5432/ecomm_demo?sslmode=disable
+docPath: doc/schema
