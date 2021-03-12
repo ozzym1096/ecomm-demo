@@ -18,7 +18,7 @@ Live Demo: https://ecomm-demo-23423.herokuapp.com
 3. Install PostgreSQL, if it isn't already installed on your local machine; Installers are located at https://www.postgresql.org/download/
 4. Create a database using the syntax `createdb name` in the command-line
 5. Create a .env file using the variable names that are in .env.example and input the values
-	* Make sure to percent-encode any special characters for the DATABASE_URI
+	* Make sure to percent-encode any special characters for the DATABASE_URL
 6. In `src/utils/db/index.js`, comment out the ssl property of the Pool constructor
 	* The ssl property is only needed in production in order to connect to a Heroku database
 7. `npm install`
