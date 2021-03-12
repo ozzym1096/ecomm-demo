@@ -1,8 +1,10 @@
-import axios from "axios";
-import defaultCloudinary from "cloudinary";
+import fs from "fs-extra";
+import path from "path";
+import cloudinaryLib from "cloudinary";
 import pg from "pg";
+import faker from "faker";
 
-const { v2: cloudinary } = defaultCloudinary;
+const { v2: cloudinary } = cloudinaryLib;
 
 cloudinary.config({
 	"cloud_name": process.env.CLOUDINARY_NAME,
@@ -14,44 +16,121 @@ const client = new pg.Client({
 	connectionString: process.env.DATABASE_URL
 });
 
-; (async () => {
+async function createTables() {
+	const sqlFileString = await fs.readFile(path.resolve("ecomm_demo.sql"), 'utf8');
+
+	// Create Tables
+	console.log("Tables are being created in database %s...", client.database);
+	await client.query(sqlFileString);
+	console.log("Tables were created!");
+}
+
+function createSetOfRandomLength(maxItems, fakerFunction) {
+	let res = new Set();
+
+	for (let i = 1; i <= Math.ceil(Math.random() * maxItems); i++) {
+		const itemToAdd = fakerFunction();
+
+		if (res.has(itemToAdd)) {
+			i--;
+			continue;
+		} else {
+			res.add(itemToAdd);
+		}
+	}
+
+	return res;
+}
+
+function addProductsToDb(products, fn) {
+	return products.reduce(
+		async function (promise, product) {
+			await promise;
+			return fn(product);
+		},
+		Promise.resolve()
+	);
+}
+
+async function addToDatabase(product) {
+	let materialsIds = [];
+
 	try {
-		const { resources: imagesData } = await cloudinary.search.expression("folder=ecomm-demo\/products").execute();
-		const imageNames = [].concat(imagesData).map(l => l.filename);
-
-		const { data: products } = await axios.post(
-			"https://micro-jaymock.now.sh/",
-			{
-				"id": "random.uuid",
-				"name": "commerce.productName",
-				"department": "commerce.department",
-				"price": "commerce.price",
-				"adjectives": "commerce.productAdjective|3",
-				"materials": "commerce.productMaterial|2",
-				"description": "lorem.paragraph",
-				"_repeat": imageNames.length
-			}
+		await client.query('begin');
+		const { rows: { 0: { _department_id: departmentId } } } = await client.query(
+			`select * from return_department_id($1)`,
+			[product.department]
 		);
-		products.forEach((product, i) => {
-			product.price = parseInt(product.price, 10);
-			product.image = imageNames[i % imageNames.length]
+		const { rows: { 0: { _brand_id: brandId } } } = await client.query(
+			`select * from return_brand_id($1)`,
+			[product.brand]
+		);
+		for (const material of product.materials) {
+			let { rows: { 0: { _material_id } } } = await client.query(
+				`select * from return_material_id($1)`,
+				[material]
+			)
+			materialsIds.push(_material_id);
+		}
+		const { rows: { 0: { product_id: productId } } } = await client.query(
+			`insert into product(product_name, department_id, price_usd, product_description, brand_id, rating, image_name)
+			values($1, $2, $3, $4, $5, $6, $7)
+			returning product_id`,
+			[
+				product.name,
+				departmentId,
+				product.priceUSD,
+				product.description,
+				brandId,
+				product.rating,
+				product.imageName
+			]
+		);
+		for (const materialId of materialsIds) {
+			await client.query(
+				`insert into product_material(product_id, material_id)
+				values($1, $2)`,
+				[productId, materialId]
+			)
+		}
+		await client.query('commit');
+		return Promise.resolve();
+	}
+	catch (err) {
+		await client.query('rollback');
+		throw err;
+	}
+}
+
+; (async () => {
+	await client.connect();
+
+	try {
+		await createTables();
+
+		let { resources: imagesNames } = await cloudinary
+			.search
+			.expression("folder=ecomm-demo\/products")
+			.execute();
+		imagesNames = imagesNames.map(i => i.filename);
+
+		const products = Array.from({ length: imagesNames.length }, (_, i) => {
+			return {
+				"name": faker.commerce.productName(),
+				"department": faker.commerce.department(),
+				"priceUSD": parseInt(faker.commerce.price(10, 999), 10),
+				"description": faker.lorem.paragraph(),
+				"materials": [...createSetOfRandomLength(3, faker.commerce.productMaterial)],
+				"brand": faker.company.companyName(),
+				"rating": faker.random.number({ min: 1, max: 5 }),
+				"imageName": imagesNames[i % imagesNames.length]
+			}
 		});
 
-		await client.connect();
-		await client.query("create table products (" +
-			"id uuid primary key," +
-			"name text not null," +
-			"department text not null," +
-			"price integer not null," +
-			"adjectives text[]," +
-			"materials text[]," +
-			"description text not null," +
-			"image text not null)");
-		await client.query({
-			text: "insert into products (select * from json_populate_recordset(null::products, $1))",
-			values: [JSON.stringify(products)]
-		});
-		console.log("Data was inserted into table 'products'");
+		// Insert mock data into database
+		console.log("Data is being inserted into database %s...", client.database);
+		await addProductsToDb(products, addToDatabase);
+		console.log("Data was added to database!");
 	}
 	catch (err) {
 		console.error(err);
