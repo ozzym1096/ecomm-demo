@@ -86,13 +86,16 @@ async function addToDatabase(product) {
 				product.imageName
 			]
 		);
-		for (const materialId of materialsIds) {
-			await client.query(
-				`insert into product_material(product_id, material_id)
-				values($1, $2)`,
-				[productId, materialId]
+		await client.query(
+			`with ins as (
+				select p.product_id, m.material_id
+				from (values($1::integer)) p(product_id)
+				cross join unnest($2::integer[]) m(material_id)
 			)
-		}
+			insert into product_material(product_id, material_id)
+			select * from ins`,
+			[productId, materialsIds]
+		)
 		await client.query('commit');
 		return Promise.resolve();
 	}
