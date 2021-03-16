@@ -11,7 +11,7 @@
 			href="/products"
 			aria-current="{$page.path === '/products' ? 'page' : undefined}"
 		>
-			<span>products</span>
+			products
 		</a>
 	</li>
 	<li class="nav-list-item">
@@ -20,7 +20,7 @@
 			href="/about"
 			aria-current="{$page.path === '/about' ? 'page' : undefined}"
 		>
-			<span>about</span>
+			about
 		</a>
 	</li>
 	<li class="nav-list-item">
@@ -29,7 +29,7 @@
 			href="/contact"
 			aria-current="{$page.path === '/contact' ? 'page' : undefined}"
 		>
-			<span>contact</span>
+			contact
 		</a>
 	</li>
 	<li class="nav-list-item">
@@ -41,7 +41,10 @@
 			<svg
 				class="svg-cart"
 				xmlns="http://www.w3.org/2000/svg"
+				width="2em"
+				height="2em"
 				viewBox="0 0 576 512"
+				fill="currentColor"
 			>
 				<path
 					d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64
@@ -61,11 +64,18 @@
 </ul>
 
 <style>
-	[aria-current] > span,
-	[aria-current] > svg {
+	.nav-list-item-link[aria-current] {
 		color: var(--color-blue-dark);
 		fill: var(--color-blue-dark);
 		font-weight: var(--font-weight-boldest);
+	}
+
+	.nav-list-item-link[aria-current]::before {
+		content: "\25BC";
+		position: absolute;
+		display: block;
+		font-size: var(--font-size-small);
+		top: 3%;
 	}
 
 	.nav-list {
@@ -77,9 +87,6 @@
 	}
 
 	.nav-list-item {
-		color: var(--color-orange-dark);
-		font-size: var(--font-size-small);
-		font-weight: var(--font-weight-bolder);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -93,12 +100,10 @@
 		justify-content: center;
 		padding-top: 2.5vh;
 		padding-bottom: 2.5vh;
-	}
-
-	.svg-cart {
-		height: calc(var(--font-size-base) + 2px);
-		display: block;
-		fill: var(--color-orange-dark);
+		color: var(--color-orange-dark);
+		font-size: var(--font-size-small);
+		font-weight: var(--font-weight-bolder);
+		position: relative;
 	}
 
 	@media (orientation: landscape) and (max-height: 500px) {
