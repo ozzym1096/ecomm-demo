@@ -10,17 +10,6 @@
 </script>
 
 <script>
-	/**
-	 * @type {{
-	 * 	id: string,
-	 * 	name: string,
-	 * 	department: string,
-	 * 	price: number,
-	 * 	materials: string[],
-	 * 	description: string,
-	 * 	image: string
-	 * }}
-	 */
 	export let product;
 	export let cloud_name;
 
@@ -51,17 +40,17 @@
 		<div class="product-image-arbox"></div>
 		<div class="product-image-content">
 			<img
-				use:image="{{ src: `\/ecomm-demo\/products\/${product.image}`, bind: '.product-image-content', step: 100, lazy: false, options: { crop: 'lfill', gravity: 'auto' } }}"
+				use:image="{{ src: `\/ecomm-demo\/products\/${product.imageName}`, bind: '.product-image-content', step: 100, lazy: false, options: { crop: 'lfill', gravity: 'auto' } }}"
 				style="width: 100%; height: 100%;"
-				alt="{`Photo of ${product.name}`}"
+				alt="{product.name}"
 			/>
 		</div>
 	</div>
 	<div class="container-price-and-rating">
-		<p class="product-price">${product.price}</p>
+		<p class="product-price">${product.priceUsd}</p>
 		<div class="product-rating">
 			<StarRating
-				rating="{3.5}"
+				rating="{product.rating}"
 				isIndicatorActive="{false}"
 				style="{{ styleStarWidth: 15, styleEmptyStarColor: 'hsl(0, 0%, 10%)', styleFullStarColor: 'hsl(15, 100%, 43%)' }}"
 			/>

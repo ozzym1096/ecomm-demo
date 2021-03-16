@@ -1,15 +1,4 @@
 <script>
-	/**
-	 * @type {{
-	 * 	id: string,
-	 * 	name: string,
-	 * 	department: string,
-	 * 	price: number,
-	 * 	materials: string[],
-	 * 	description: string,
-	 * 	image: string
-	 * }}
-	 */
 	export let product;
 
 	import { image } from "svelte-cloudinary";
@@ -21,15 +10,15 @@
 			<div class="product-card-image-arbox"></div>
 			<div class="product-card-image-content">
 				<img
-					use:image="{{ src: `\/ecomm-demo\/products\/${product.image}`, bind: '.product-card-image-content', step: 5, lazy: true, options: { crop: 'fill', gravity: 'auto' } }}"
+					use:image="{{ src: `\/ecomm-demo\/products\/${product.imageName}`, bind: '.product-card-image-content', step: 5, lazy: true, options: { crop: 'fill', gravity: 'auto' } }}"
 					style="width: 100%; height: 100%;"
-					alt="{`Product photo of ${product.name}`}"
+					alt="{product.name}"
 				/>
 			</div>
 		</div>
 		<div class="product-card-info card-info card-content">
 			<h2 class="product-card-info-name">{product.name}</h2>
-			<p>${product.price}</p>
+			<p>${product.priceUsd}</p>
 		</div>
 	</a>
 </li>
