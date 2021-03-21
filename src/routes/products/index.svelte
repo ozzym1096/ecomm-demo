@@ -1,7 +1,5 @@
 <script context="module">
 	export async function preload(page, session) {
-		const { CLOUDINARY_NAME } = session;
-
 		const queryString = [];
 		for (let query in page.query) {
 			queryString.push(
@@ -19,19 +17,14 @@
 
 		return {
 			products: data,
-			cloud_name: CLOUDINARY_NAME,
 		};
 	}
 </script>
 
 <script>
 	export let products;
-	export let cloud_name;
 
-	import { initialize } from "svelte-cloudinary";
 	import ProductCard from "../../components/ProductCard.svelte";
-
-	initialize({ cloud_name });
 </script>
 
 <svelte:head>
@@ -46,7 +39,6 @@
 	<div class="products-grid-feat">
 		<h1 class="products-grid-feat-text">Featured Products</h1>
 	</div>
-	<button class="button-filter" type="button">Filter</button>
 	<ul class="products-grid cards-list">
 		{#if products.length}
 			{#each products as product}
@@ -82,10 +74,6 @@
 		padding-left: 6vw;
 		padding-bottom: 3vh;
 		padding-top: 7vh;
-	}
-
-	.button-filter {
-		margin-bottom: 5vh;
 	}
 
 	@media (orientation: landscape) and (max-height: 500px) {

@@ -1,22 +1,17 @@
 <script context="module">
 	export async function preload(page, session) {
-		const { CLOUDINARY_NAME } = session;
-
 		const res = await this.fetch(`products/${page.params.productId}.json`);
 		const data = await res.json();
 
-		return { product: data, cloud_name: CLOUDINARY_NAME };
+		return { product: data };
 	}
 </script>
 
 <script>
 	export let product;
-	export let cloud_name;
 
-	import { initialize, image } from "svelte-cloudinary";
+	import { image } from "svelte-cloudinary";
 	import StarRating from "svelte-stars-rating";
-
-	initialize({ cloud_name });
 </script>
 
 <svelte:head>

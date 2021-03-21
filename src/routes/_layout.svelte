@@ -1,5 +1,19 @@
+<script context="module">
+	export async function preload(page, session) {
+		const { CLOUDINARY_NAME: cloud_name } = session;
+		return { cloud_name };
+	}
+</script>
+
 <script>
+	export let cloud_name;
+
 	import MainNavList from "../components/MainNavList.svelte";
+	import { initialize } from "svelte-cloudinary";
+
+	initialize({
+		cloud_name,
+	});
 </script>
 
 <header id="main-header" class="l-wrapper">
