@@ -4,10 +4,10 @@
 	"version": "1.0.0",
 	"scripts": {
 		"dbSetup": "dotenv node dbSetup.mjs",
-		"dev": "dotenv sapper dev",
-		"build": "sapper build",
+		"dev": "$env:NODE_ENV='development'; dotenv sapper dev",
+		"build": "$env:NODE_ENV='production'; sapper build",
 		"start": "node __sapper__/build",
-		"export": "sapper export",
+		"export": "$env:NODE_ENV='production'; sapper export",
 		"svelte-check": "svelte-check"
 	},
 	"dependencies": {
