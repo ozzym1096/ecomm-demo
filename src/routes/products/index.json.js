@@ -2,25 +2,42 @@ import db from "../../utils/db";
 
 export async function get(req, res, next) {
 	try {
-		const params = [];
-		const whereClauses = [];
+		let params = [];
+		let joinClauses = [];
 
 		if (req.query.department) {
 			params.push(req.query.department);
-			whereClauses.push(`department = $${params.length}`);
+			joinClauses.push(`
+			inner join (select department_id, department_name from department where department_name=$${params.length}) d on p.department_id=d.department_id`)
 		}
 		if (req.query.materials) {
 			params.push(req.query.materials.split(','));
-			whereClauses.push(`materials && $${params.length}`);
+			joinClauses.push(`
+			inner join (
+				select p_m.product_id, m_temp.material_name
+				from material m_temp
+				inner join product_material p_m on m_temp.material_id=p_m.material_id
+				where m_temp.material_name = any ($${params.length})
+			) m on p.product_id=m.product_id`)
 		}
-		const sql = `select name, price, image, id from products ${whereClauses.length === 0
-			? ''
-			: 'where ' + whereClauses.join(' and ')};
-		`;
-		const { rows } = await db.query(sql, params);
 
-		res.writeHead(200, { "Content-Type": "application/json" });
-		res.end(JSON.stringify(rows));
+		const queryText =
+			`select
+				p.product_id "id",
+				p.product_name "name",
+				p.price_usd "priceUsd",
+				p.image_name "imageName"${req.query.department ? `,
+				d.department_name "department"` : ''}${req.query.materials ? `,
+				array_agg(m.material_name) "materials"` : ''}
+			from product p${joinClauses.length > 0 ? joinClauses.join('\r') : ''}
+			group by
+				p.product_id${req.query.department ? `,
+				d.department_name` : ''}`;
+
+		let rows = JSON.stringify(await db.query(queryText, params));
+
+		res.writeHead(200, { "Content-Type": "application/json", "content-length": Buffer.byteLength(rows) });
+		res.end(rows);
 	}
 	catch (err) {
 		next(err);

@@ -2,7 +2,7 @@ import db from "../../../utils/db";
 
 export async function get(req, res, next) {
 	try {
-		const { rows } = await db.query(`
+		let queryRes = await db.query(`
 		select
 			p.product_id "id",
 			p.product_name "name",
@@ -29,9 +29,10 @@ export async function get(req, res, next) {
 			d.department_name,
 			b.brand_name`,
 			[req.params.productId]);
-		if (rows.length > 0) {
-			res.writeHead(200, { "Content-Type": "application/json" });
-			res.end(JSON.stringify(rows[0]));
+		if (queryRes.length > 0) {
+			queryRes = JSON.stringify(queryRes[0]);
+			res.writeHead(200, { "Content-Type": "application/json", "content-length": Buffer.byteLength(queryRes) });
+			res.end(queryRes);
 		} else {
 			throw new Error("Item not found");
 		}
