@@ -5,9 +5,9 @@
 	"scripts": {
 		"dbSetup": "dotenv node dbSetup.mjs",
 		"dev": "dotenv sapper dev",
-		"build": "NODE_ENV=production && sapper build",
+		"build": "sapper build",
 		"start": "node __sapper__/build",
-		"export": "NODE_ENV=production && sapper export",
+		"export": "sapper export",
 		"svelte-check": "svelte-check"
 	},
 	"dependencies": {
