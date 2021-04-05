@@ -17,7 +17,7 @@ const client = new pg.Client({
 });
 
 async function createTables() {
-	const sqlFileString = await fs.readFile(path.resolve("ecomm_demo.sql"), 'utf8');
+	const sqlFileString = await fs.readFile(path.resolve("create_tables.sql"), 'utf8');
 
 	// Create Tables
 	console.log("Tables are being created in database %s...", client.database);
@@ -125,7 +125,7 @@ async function addToDatabase(product) {
 				"description": faker.lorem.paragraph(),
 				"materials": [...createSetOfRandomLength(3, faker.commerce.productMaterial)],
 				"brand": faker.company.companyName(),
-				"rating": faker.random.number({ min: 1, max: 5 }),
+				"rating": faker.datatype.number({ min: 1, max: 5 }),
 				"imageName": imagesNames[i % imagesNames.length]
 			}
 		});
