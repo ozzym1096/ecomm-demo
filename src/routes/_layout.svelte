@@ -1,5 +1,5 @@
 <script context="module">
-	export async function preload(page, session) {
+	export async function preload(_, session) {
 		const { CLOUDINARY_NAME: cloud_name } = session;
 		return { cloud_name };
 	}

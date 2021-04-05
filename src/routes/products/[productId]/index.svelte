@@ -1,5 +1,5 @@
 <script context="module">
-	export async function preload(page, session) {
+	export async function preload(page, _) {
 		const res = await this.fetch(`products/${page.params.productId}.json`);
 		const data = await res.json();
 
@@ -22,9 +22,9 @@
 	<ol class="breadcrumb-list">
 		<li class="breadcrumb-item"><a href="products">Products</a></li>
 		<li class="breadcrumb-item">
-			<a
-				href="{`products?department=${product.department}`}"
-			>{product.department}</a>
+			<a href="{`products?department=${product.department}`}"
+				>{product.department}</a
+			>
 		</li>
 	</ol>
 </nav>
@@ -35,7 +35,13 @@
 		<div class="product-image-arbox"></div>
 		<div class="product-image-content">
 			<img
-				use:image="{{ src: `\/ecomm-demo\/products\/${product.imageName}`, bind: '.product-image-content', step: 100, lazy: false, options: { crop: 'lfill', gravity: 'auto' } }}"
+				use:image="{{
+					src: `\/ecomm-demo\/products\/${product.imageName}`,
+					bind: '.product-image-content',
+					step: 100,
+					lazy: false,
+					options: { crop: 'lfill', gravity: 'auto' },
+				}}"
 				style="width: 100%; height: 100%;"
 				alt="{product.name}"
 			/>
@@ -47,7 +53,11 @@
 			<StarRating
 				rating="{product.rating}"
 				isIndicatorActive="{false}"
-				style="{{ styleStarWidth: 15, styleEmptyStarColor: 'hsl(0, 0%, 10%)', styleFullStarColor: 'hsl(15, 100%, 43%)' }}"
+				style="{{
+					styleStarWidth: 15,
+					styleEmptyStarColor: 'hsl(0, 0%, 10%)',
+					styleFullStarColor: 'hsl(15, 100%, 43%)',
+				}}"
 			/>
 		</div>
 	</div>
