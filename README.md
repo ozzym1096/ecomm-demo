@@ -2,8 +2,6 @@
 This demo app includes the front end and back end for an e-commerce store.
 It's being built from scratch, so there are lots of opportunities for beginners to practice their coding skills!
 
-Live Demo: https://ecomm-demo-23423.herokuapp.com
-
 ## Built with:
 * [Svelte](https://svelte.dev)
 * [Sapper](https://sapper.svelte.dev)
