@@ -1,13 +1,13 @@
 {
 	"name": "ecomm-demo",
-	"description": "TODO",
+	"description": "In progress e-commerce demo with front-end and back-end apps",
 	"version": "1.0.0",
 	"scripts": {
 		"dbSetup": "dotenv node dbSetup.mjs",
-		"dev": "$env:NODE_ENV='development'; dotenv sapper dev",
-		"build": "$env:NODE_ENV='production'; sapper build",
-		"start": "dotenv node __sapper__/build",
-		"export": "$env:NODE_ENV='production'; sapper export",
+		"dev": "dotenv sapper dev",
+		"build": "NODE_ENV=production && sapper build",
+		"start": "node __sapper__/build",
+		"export": "NODE_ENV=production && sapper export",
 		"svelte-check": "svelte-check"
 	},
 	"dependencies": {
