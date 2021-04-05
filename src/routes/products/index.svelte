@@ -1,30 +1,60 @@
 <script context="module">
-	export async function preload(page, session) {
-		const queryString = [];
-		for (let query in page.query) {
-			queryString.push(
-				`${query}=${page.query[query]
-					.toLowerCase()
-					.replace(/^\w/, (f) => f.toUpperCase())}`
-			);
-		}
-		const res = await this.fetch(
-			`products.json${
-				queryString.length === 0 ? "" : "?" + queryString.join("&")
-			}`
-		);
-		const data = await res.json();
+	import { frontPageProducts } from "../../stores";
+	import ProductCard from "../../components/ProductCard.svelte";
 
-		return {
-			products: data,
-		};
+	/**
+	 * Query database using filters
+	 * @param filterInfo An object with syntax {filterName: filterArgs[, ...]}
+	 *
+	 * @returns Array with product data
+	 */
+	function createFilterQueryString(filterInfo) {
+		let queryString = [];
+
+		for (const filter in filterInfo) {
+			queryString.push(`${filter}=${filterInfo[filter]}`);
+		}
+
+		return queryString.join("&");
+	}
+
+	export async function preload(page) {
+		let filteredProducts = [];
+
+		if (Object.entries(page.query).length) {
+			const queryString = createFilterQueryString(page.query);
+			const queryResult = await this.fetch(
+				`products.json?${queryString}`
+			);
+			filteredProducts = await queryResult.json();
+
+			return {
+				filteredProducts,
+				filterIsInUse: true,
+			};
+		} else {
+			return {
+				filteredProducts,
+				filterIsInUse: false,
+			};
+		}
 	}
 </script>
 
 <script>
-	export let products;
+	export let filteredProducts;
+	export let filterIsInUse;
 
-	import ProductCard from "../../components/ProductCard.svelte";
+	import { onMount } from "svelte";
+
+	onMount(() => {
+		if (!$frontPageProducts.length) {
+			(async () => {
+				const frontPageProductsData = await fetch("products.json");
+				frontPageProducts.set(await frontPageProductsData.json());
+			})();
+		}
+	});
 </script>
 
 <svelte:head>
@@ -36,20 +66,26 @@
 </svelte:head>
 
 <section id="products" class="products">
-	<div class="products-grid-feat">
-		<h1 class="products-grid-feat-text">Featured Products</h1>
-	</div>
-	<ul class="products-grid cards-list">
-		{#if products.length}
-			{#each products as product}
+	{#if filterIsInUse}
+		{#if filteredProducts.length}
+			<ul class="products-grid cards-list">
+				{#each filteredProducts as product}
+					<ProductCard product="{product}" />
+				{/each}
+			</ul>
+		{:else}
+			<h1>There are no matching products</h1>
+		{/if}
+	{:else}
+		<div class="products-title">
+			<h1 class="products-title-text">All Products</h1>
+		</div>
+		<ul class="products-grid cards-list">
+			{#each $frontPageProducts as product}
 				<ProductCard product="{product}" />
 			{/each}
-		{:else}
-			<li>
-				<h1>There are no matching products</h1>
-			</li>
-		{/if}
-	</ul>
+		</ul>
+	{/if}
 </section>
 
 <style>
@@ -59,14 +95,14 @@
 		grid-column-gap: 2vw;
 	}
 
-	.products-grid-feat {
+	.products-title {
 		width: 100%;
 		background-color: var(--color-blue-light);
 		color: var(--color-blue-dark);
 		margin-bottom: 5vh;
 	}
 
-	.products-grid-feat-text {
+	.products-title-text {
 		font-size: var(--font-size-xlarge);
 		font-weight: var(--font-weight-boldest);
 		line-height: 1.3;
@@ -81,7 +117,7 @@
 			grid-row-gap: 3vh;
 		}
 
-		.products-grid-feat-text {
+		.products-title-text {
 			padding-left: 5vh;
 		}
 	}
@@ -92,7 +128,7 @@
 			justify-content: center;
 		}
 
-		.products-grid-feat-text {
+		.products-title-text {
 			font-size: var(--font-size-xxlarge);
 			padding-left: 4vh;
 			padding-top: 7vh;
