@@ -17,24 +17,6 @@
 	<li class="nav-list-item">
 		<a
 			class="nav-list-item-link"
-			href="/about"
-			aria-current="{$page.path === '/about' ? 'page' : undefined}"
-		>
-			about
-		</a>
-	</li>
-	<li class="nav-list-item">
-		<a
-			class="nav-list-item-link"
-			href="/contact"
-			aria-current="{$page.path === '/contact' ? 'page' : undefined}"
-		>
-			contact
-		</a>
-	</li>
-	<li class="nav-list-item">
-		<a
-			class="nav-list-item-link"
 			href="/cart"
 			aria-current="{$page.path === '/cart' ? 'page' : undefined}"
 		>
