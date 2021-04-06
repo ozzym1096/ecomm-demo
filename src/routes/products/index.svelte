@@ -12,7 +12,11 @@
 		let queryString = [];
 
 		for (const filter in filterInfo) {
-			queryString.push(`${filter}=${filterInfo[filter]}`);
+			queryString.push(
+				`${filter}=${filterInfo[filter]
+					.toLowerCase()
+					.replace(/^\w/, (f) => f.toUpperCase())}`
+			);
 		}
 
 		return queryString.join("&");
@@ -46,6 +50,9 @@
 	export let filterIsInUse;
 
 	import { onMount } from "svelte";
+	import { stores } from "@sapper/app";
+
+	const { page } = stores();
 
 	onMount(() => {
 		if (!$frontPageProducts.length) {
@@ -67,6 +74,10 @@
 
 <section id="products" class="products">
 	{#if filterIsInUse}
+		<p>Filters:</p>
+		{#each Object.keys($page.query) as filter}
+			<p>{filter} = {$page.query[filter]}</p>
+		{/each}
 		{#if filteredProducts.length}
 			<ul class="products-grid cards-list">
 				{#each filteredProducts as product}
