@@ -5,6 +5,7 @@ import svelte from "rollup-plugin-svelte";
 import { terser } from "rollup-plugin-terser";
 import config from "sapper/config/rollup.js";
 import pkg from "./package.json";
+const svelteConfig = require('./svelte.config.js');
 
 const mode = process.env.NODE_ENV;
 const dev = mode === "development";
@@ -27,7 +28,8 @@ export default {
 			svelte({
 				dev,
 				hydratable: true,
-				emitCss: true
+				emitCss: true,
+				...svelteConfig
 			}),
 			resolve({
 				browser: true,
@@ -55,7 +57,8 @@ export default {
 			svelte({
 				generate: "ssr",
 				hydratable: true,
-				dev
+				dev,
+				...svelteConfig
 			}),
 			resolve({
 				dedupe: ["svelte"]
