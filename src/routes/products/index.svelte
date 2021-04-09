@@ -102,8 +102,6 @@
 <style>
 	.products-grid {
 		display: grid;
-		grid-row-gap: 1vh;
-		grid-column-gap: 2vw;
 	}
 
 	.products-title {
@@ -135,7 +133,7 @@
 
 	@media (min-width: 671px) and (min-height: 501px) {
 		.products-grid {
-			grid-template-columns: repeat(auto-fit, minmax(120px, 170px));
+			grid-template-columns: repeat(auto-fit, minmax(170px, 180px));
 			justify-content: center;
 		}
 

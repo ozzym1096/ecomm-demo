@@ -110,6 +110,10 @@ button {
 	list-style-type: none;
 }
 
+.card-content {
+	margin-left: 5%;
+}
+
 .breadcrumb {
 	font-size: var(--font-size-small);
 }
@@ -156,4 +160,10 @@ button {
 	overflow: hidden;
 	clip: rect(0,0,0,0);
 	border: 0;
+}
+
+@media screen and (min-width: 671px) and (min-height: 501px) {
+	.card-content {
+		margin-left: 0px;
+	}
 }

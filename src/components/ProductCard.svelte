@@ -10,7 +10,13 @@
 			<div class="product-card-image-arbox"></div>
 			<div class="product-card-image-content">
 				<img
-					use:image="{{ src: `\/ecomm-demo\/products\/${product.imageName}`, bind: '.product-card-image-content', step: 5, lazy: true, options: { crop: 'fill', gravity: 'auto' } }}"
+					use:image="{{
+						src: `\/ecomm-demo\/products\/${product.imageName}`,
+						bind: '.product-card-image-content',
+						step: 5,
+						lazy: true,
+						options: { crop: 'fill', gravity: 'auto' },
+					}}"
 					style="width: 100%; height: 100%;"
 					alt="{product.name}"
 				/>
@@ -32,15 +38,10 @@
 		align-items: center;
 	}
 
-	.card-content {
-		margin-left: 5%;
-	}
-
 	.product-card-image {
 		width: 28%;
 		position: relative;
 		box-sizing: border-box;
-		margin-top: 1rem;
 		margin-bottom: 1rem;
 	}
 
@@ -65,6 +66,7 @@
 		font-size: var(--font-size-base);
 		font-weight: var(--font-weight-reg);
 		text-decoration: underline;
+		margin-bottom: 0.5em;
 	}
 
 	@media (min-width: 480px) {
@@ -75,15 +77,13 @@
 
 	@media (min-width: 671px) and (min-height: 501px) {
 		.product-card-link {
-			border: initial;
-		}
-
-		.card-content {
-			margin-left: 0;
-		}
-
-		.product-card-link {
 			flex-direction: column;
+			border: initial;
+			padding: 15px;
+		}
+
+		.product-card-link:hover {
+			box-shadow: 0px 0px 5px #e7e7e7;
 		}
 
 		.product-card-image {
@@ -92,6 +92,13 @@
 
 		.product-card-info {
 			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.product-card-info-name {
+			text-align: center;
 		}
 	}
 </style>
