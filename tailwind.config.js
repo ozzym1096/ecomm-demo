@@ -1,0 +1,15 @@
+const production = process.env.NODE_ENV === "production";
+
+module.exports = {
+	future: {
+		purgeLayersByDefault: true,
+		removeDeprecatedGapUtilities: true,
+	},
+	purge: {
+		content: [
+			"./src/**/*.svelte",
+		],
+		enabled: production,
+	},
+	plugins: [],
+}

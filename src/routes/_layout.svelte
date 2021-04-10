@@ -30,7 +30,11 @@
 	</div>
 </main>
 
-<style>
+<style global lang="postcss">
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
 	#main-header {
 		display: flex;
 		flex-direction: row;
