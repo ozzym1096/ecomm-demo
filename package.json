@@ -1,6 +1,6 @@
 {
 	"name": "ecomm-demo",
-	"description": "In progress e-commerce demo with front-end and back-end apps",
+	"description": "In-progress e-commerce demo built with Sapper",
 	"version": "1.0.0",
 	"scripts": {
 		"dbSetup": "dotenv node dbSetup.mjs",

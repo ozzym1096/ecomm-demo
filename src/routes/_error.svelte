@@ -16,26 +16,3 @@
 {#if dev && error.stack}
 	<pre>{error.stack}</pre>
 {/if}
-
-<style>
-	h1,
-	p {
-		margin: 0 auto;
-	}
-
-	h1 {
-		font-size: var(--font-xlarge);
-		font-weight: var(--font-weight-bolder);
-		margin: 0 0 0.5em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: var(--font-size-xxxxlarge);
-		}
-	}
-</style>
