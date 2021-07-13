@@ -9,9 +9,9 @@
 	<title>{status}</title>
 </svelte:head>
 
-<h1>{status}</h1>
+<h1 class="mb-2 text-5xl font-bold sm:text-7xl">{status}</h1>
 
-<p>{error.message}</p>
+<p class="my-4 mx-auto">{error.message}</p>
 
 {#if dev && error.stack}
 	<pre>{error.stack}</pre>

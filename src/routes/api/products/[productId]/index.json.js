@@ -1,8 +1,9 @@
-import db from "../../../utils/db";
+import db from "../../../../utils/db";
 
 export async function get(req, res, next) {
 	try {
-		let queryRes = await db.query(`
+		let queryRes = await db.query(
+			`
 		select
 			p.product_id "id",
 			p.product_name "name",
@@ -28,16 +29,19 @@ export async function get(req, res, next) {
 			p.product_id,
 			d.department_name,
 			b.brand_name`,
-			[req.params.productId]);
+			[req.params.productId]
+		);
 		if (queryRes.length > 0) {
 			queryRes = JSON.stringify(queryRes[0]);
-			res.writeHead(200, { "Content-Type": "application/json", "content-length": Buffer.byteLength(queryRes) });
+			res.writeHead(200, {
+				"Content-Type": "application/json",
+				"content-length": Buffer.byteLength(queryRes),
+			});
 			res.end(queryRes);
 		} else {
 			throw new Error("Item not found");
 		}
-	}
-	catch (err) {
+	} catch (err) {
 		next(err);
 	}
 }

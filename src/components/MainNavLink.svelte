@@ -10,27 +10,26 @@
 
 <li>
 	<a
-		class="font-bold"
+		class="relative"
 		href="{href}"
-		aria-current="{$page.path === href ? 'page' : undefined}"
-	>
+		aria-current="{$page.path === href ? 'page' : undefined}">
 		<div
-			class="nav-link min-w-min w-12 h-12 flex flex-col justify-center items-center"
-		>
+			class="nav-link relative flex flex-col justify-center items-center"
+			style="min-height: 44px; min-width: 44px;">
 			<slot />
 		</div>
 	</a>
 </li>
 
-<style global lang="postcss">
-	@layer base {
-		[aria-current] > .nav-link {
-			@apply text-blue-800;
+<style>
+	@layer utilities {
+		[aria-current] {
+			@apply text-blue-900;
 		}
 
 		[aria-current] > .nav-link::before {
 			content: "\25BC";
-			@apply text-xs;
+			@apply text-xs absolute left-1/2 transform -translate-x-1/2 -top-0.5;
 		}
 	}
 </style>

@@ -1,6 +1,8 @@
 <script context="module">
 	export async function preload(page, _) {
-		const res = await this.fetch(`products/${page.params.productId}.json`);
+		const res = await this.fetch(
+			`api/products/${page.params.productId}.json`
+		);
 		const data = await res.json();
 
 		return { product: data };
@@ -10,12 +12,15 @@
 <script>
 	export let product;
 
-	import { image } from "svelte-cloudinary";
+	// import { image } from "svelte-cloudinary";
 	import StarRating from "svelte-stars-rating";
 </script>
 
 <svelte:head>
 	<title>{product.name} - Craaaiiig's</title>
+	<meta
+		name="description"
+		content="Product information for {product.name}; inlcuding image, price, and description." />
 </svelte:head>
 
 <nav aria-label="Breadcrumb" class="breadcrumb">
@@ -23,18 +28,15 @@
 		<li class="breadcrumb-item"><a href="products">Products</a></li>
 		<li class="breadcrumb-item">
 			<a href="{`products?department=${product.department}`}"
-				>{product.department}</a
-			>
+				>{product.department}</a>
 		</li>
 	</ol>
 </nav>
 <article class="product">
 	<p class="product-id">SKU: {product.id}</p>
 	<h2 class="product-name">{product.name}</h2>
-	<div class="product-image">
-		<div class="product-image-arbox"></div>
-		<div class="product-image-content">
-			<img
+	<div class="w-full aspect-w-6 aspect-h-4">
+		<!-- <img
 				use:image="{{
 					src: `\/ecomm-demo\/products\/${product.imageName}`,
 					bind: '.product-image-content',
@@ -43,9 +45,11 @@
 					options: { crop: 'lfill', gravity: 'auto' },
 				}}"
 				style="width: 100%; height: 100%;"
-				alt="{product.name}"
-			/>
-		</div>
+				alt="{product.name}" /> -->
+		<img
+			class="object-cover"
+			src="{`images/products/no-bg/${product.imageName}.png`}"
+			alt="{product.name}" />
 	</div>
 	<div class="container-price-and-rating">
 		<p class="product-price">${product.priceUsd}</p>
@@ -57,8 +61,7 @@
 					styleStarWidth: 15,
 					styleEmptyStarColor: 'hsl(0, 0%, 10%)',
 					styleFullStarColor: 'hsl(15, 100%, 43%)',
-				}}"
-			/>
+				}}" />
 		</div>
 	</div>
 	<div class="container-quantity-and-cart">
@@ -103,25 +106,6 @@
 		margin-bottom: 1vh;
 	}
 
-	.product-image {
-		box-sizing: border-box;
-		position: relative;
-		width: 100%;
-		margin-bottom: 5vh;
-	}
-
-	.product-image-arbox {
-		padding-bottom: 110%;
-	}
-
-	.product-image-content {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
-
 	.container-price-and-rating {
 		display: flex;
 		justify-content: space-between;
@@ -163,11 +147,6 @@
 			margin-bottom: 3vh;
 		}
 
-		.product-image {
-			width: 70%;
-			align-self: center;
-		}
-
 		.product-description {
 			max-width: 60ch;
 		}
@@ -178,18 +157,6 @@
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			grid-column-gap: 4vw;
-		}
-
-		.product-image {
-			grid-area: 1 / 1 / span 6 / span 1;
-		}
-
-		.product-id {
-			grid-area: 1 / 2 / span 1 / span 1;
-		}
-
-		.product-name {
-			grid-area: 2 / 2 / span 1 / span 1;
 		}
 
 		.container-price-and-rating {

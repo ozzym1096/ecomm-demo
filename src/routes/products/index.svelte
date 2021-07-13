@@ -28,7 +28,7 @@
 		if (Object.entries(page.query).length) {
 			const queryString = createFilterQueryString(page.query);
 			const queryResult = await this.fetch(
-				`products.json?${queryString}`
+				`api/products.json?${queryString}`
 			);
 			filteredProducts = await queryResult.json();
 
@@ -53,11 +53,14 @@
 	import { stores } from "@sapper/app";
 
 	const { page } = stores();
+	$: mainText = filterIsInUse
+		? "X, Y, and Z filters active"
+		: "No filters active";
 
 	onMount(() => {
 		if (!$frontPageProducts.length) {
 			(async () => {
-				const frontPageProductsData = await fetch("products.json");
+				const frontPageProductsData = await fetch("api/products.json");
 				frontPageProducts.set(await frontPageProductsData.json());
 			})();
 		}
@@ -65,82 +68,33 @@
 </script>
 
 <svelte:head>
-	<title>All Products - Craaaiiig's</title>
+	<title>Products - Craaaiiig's</title>
 	<meta
-		name="Description"
-		content="List of all products offered by Craaaiiig's"
-	/>
+		name="description"
+		content="Product search for all products available at Craaaiiig's" />
 </svelte:head>
 
-<section id="products" class="products">
+<section>
+	<div class="bg-blue-900 px-5 py-3">
+		<h1 class="text-white font-bold">
+			{mainText}
+		</h1>
+	</div>
 	{#if filterIsInUse}
-		<p>Filters:</p>
-		{#each Object.keys($page.query) as filter}
-			<p>{filter} = {$page.query[filter]}</p>
-		{/each}
 		{#if filteredProducts.length}
-			<ul class="products-grid cards-list">
+			<ul class="card-list">
 				{#each filteredProducts as product}
 					<ProductCard product="{product}" />
 				{/each}
 			</ul>
 		{:else}
-			<h1>There are no matching products</h1>
+			<p>There are no matching products</p>
 		{/if}
 	{:else}
-		<div class="products-title">
-			<h1 class="products-title-text">All Products</h1>
-		</div>
-		<ul class="products-grid cards-list">
+		<ul class="card-list">
 			{#each $frontPageProducts as product}
 				<ProductCard product="{product}" />
 			{/each}
 		</ul>
 	{/if}
 </section>
-
-<style>
-	.products-grid {
-		display: grid;
-	}
-
-	.products-title {
-		width: 100%;
-		background-color: var(--color-blue-light);
-		color: var(--color-blue-dark);
-		margin-bottom: 5vh;
-	}
-
-	.products-title-text {
-		font-size: var(--font-size-xlarge);
-		font-weight: var(--font-weight-boldest);
-		line-height: 1.3;
-		width: min-content;
-		padding-left: 6vw;
-		padding-bottom: 3vh;
-		padding-top: 7vh;
-	}
-
-	@media (orientation: landscape) and (max-height: 500px) {
-		.products-grid {
-			grid-row-gap: 3vh;
-		}
-
-		.products-title-text {
-			padding-left: 5vh;
-		}
-	}
-
-	@media (min-width: 671px) and (min-height: 501px) {
-		.products-grid {
-			grid-template-columns: repeat(auto-fit, minmax(170px, 180px));
-			justify-content: center;
-		}
-
-		.products-title-text {
-			font-size: var(--font-size-xxlarge);
-			padding-left: 4vh;
-			padding-top: 7vh;
-		}
-	}
-</style>

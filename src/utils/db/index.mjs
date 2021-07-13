@@ -3,9 +3,9 @@ import { Pool } from "pg";
 const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	// Comment out ssl when testing locally
-	ssl: {
-		rejectUnauthorized: false
-	}
+	// ssl: {
+	// 	rejectUnauthorized: false
+	// }
 });
 
 pool.on("error", (err) => {

@@ -4,12 +4,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<meta name="theme-color" content="#333333">
 
 	%sapper.base%
-
-	<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
-	<link rel="icon" type="image/png" href="images/favicon.png">
 
 	<!-- Sapper generates a <style> tag containing critical CSS
 	     for the current page. CSS for the rest of the app is
@@ -20,13 +16,18 @@
 	     the current page has one -->
 	%sapper.head%
 
+	<meta name="theme-color" content="#333333">
+	<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+
 	<!-- Sapper creates a <script> tag containing `src/client.js`
 	     and anything else it needs to hydrate the app and
 	     initialise the router -->
 	%sapper.scripts%
 </head>
 
-<body>
+<body class="bg-gray-200">
 	<!-- The application will be rendered inside this element,
 	     because `src/client.js` references it -->
 	<div id="sapper">%sapper.html%</div>

@@ -8,6 +8,8 @@
 <script>
 	export let cloud_name;
 
+	import GlobalStyles from "../components/GlobalStyles.svelte";
+	import TailwindExtensions from "../components/TailwindExtensions.svelte";
 	import MainNav from "../components/MainNav.svelte";
 	import { initialize } from "svelte-cloudinary";
 
@@ -16,13 +18,9 @@
 	});
 </script>
 
+<GlobalStyles />
+<TailwindExtensions />
 <MainNav />
-<main class="bg-gray-100 px-7 pt-3 pb-24 sm:pb-10 sm:px-12 md:px-16 lg:px-20">
+<main class="px-7 pb-32">
 	<slot />
 </main>
-
-<style global lang="postcss">
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
-</style>
